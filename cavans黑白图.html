@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-3.3.1.min.js"></script>
+    <style>
+        #fCanvas {
+            margin: 20px auto;
+            width: 600px;
+            height: 600px;
+            border: 1px darkgreen solid;
+
+        }
+
+    </style>
+</head>
+<body>
+<div>
+    <canvas id="fCanvas">
+        <!--<p>th is my first canvas</p>-->
+    </canvas>
+    <img id="mImg" src="images/jing1.jpg" alt="222">
+</div>
+
+<script>
+    $(function () {
+        var img = document.getElementById("mImg");
+        perCanvas(img);
+    });
+
+    function perCanvas(img) {
+        img.color = img.src;
+        img.grey = createGreyCanvas(img);
+        img.onmouseover = function () {
+            img.src = img.color;
+        };
+        img.onmouseout = function () {
+            img.src = img.grey;
+        };
+        img.onmouseout();
+    }
+
+    function createGreyCanvas(img) {
+        var canvas = document.createElement("canvas");
+        canvas.width = img.width;
+        canvas.height = img.height;
+        var ctx = canvas.getContext("2d");
+        ctx.drawImage(img, 0, 0);
+
+        var c = ctx.getImageData(0, 0, img.width, img.height);
+        for (var i = 0; i < c.height; i++) {
+            for (var j = 0; j < c.width; j++) {    //遍历每一个像素点  rgba
+                var x = (i * 4) * c.width + (j * 4);
+                var r = c.data[x];
+                var g = c.data[x + 1];
+                var b = c.data[x + 2];
+                c.data[x] = c.data[x + 1] = c.data[x + 2] = (r + g + b) / 3;
+            }
+        }
+        ctx.putImageData(c, 0, 0, 0, 0, c.width, c.height);
+        return canvas.toDataURL();
+    }
+</script>
+</body>
+</html>

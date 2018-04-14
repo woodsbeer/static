@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        #nav {
+            font-size: 0;
+        /*/ / 取消inline-block的幽灵节点，使得li无间距*/
+           width: 400px;
+            height: 40px;
+            margin: 30px 0 30px 50px;
+            list-style: none;
+            text-align: center;
+        }
+
+        #nav li {
+            display: inline-block;
+            height: 40px;
+            line-height: 40px;
+            width: 100px;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: 1.5s;
+
+        }
+
+        #nav li span {
+            position: absolute;
+            left: 0;
+            top: 0;
+            display: block;
+            width: 100%;
+            height: 100%;
+            font-size: 25px;
+        }
+
+        #nav li span:first-child {
+
+            background-color: slateblue;
+            transform: rotateX(90deg) translateZ(20px);
+        / / 因为旋转所以z轴的方向变了
+        }
+
+        #nav li span:last-child {
+
+            background: royalblue;
+            transform: translateZ(20px);
+        }
+
+        #nav:hover li {
+        /*//鼠标放在ul时li都开始转*/
+            transform: rotateX(-90deg);
+        }
+
+        #nav li:nth-child(1) {
+        /*//每个li设置延迟*/
+            transition-delay: 0.3s;
+        }
+
+        #nav li:nth-child(2) {
+            transition-delay: 0.6s;
+        }
+
+        #nav li:nth-child(3) {
+            transition-delay: 0.9s;
+        }
+
+        .cube {
+            margin: 300px auto;
+            width: 400px;
+            height: 400px;
+            position: relative;
+            /*perspective: 700px;    //如果已经有了preserve-3d的立体效果可以不用这个*/
+            transform-style: preserve-3d;
+            transform: rotateY(150deg) rotateX(-50deg);
+            transition: 3s ease-in-out;
+
+        }
+
+        .cube:hover {
+            transform: rotateX(420deg) rotateY(290deg);
+        }
+
+        .left, .right, .top, .back, .front, .bottom {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            text-align: center;
+            line-height: 400px;
+            font-size: 50px;
+            left: 0;
+            top: 0;
+            opacity: 0.7;
+        }
+
+        .left {
+            transform: rotateY(90deg) translateZ(-200px);
+            background: violet;
+        }
+
+        .top {
+            transform: rotateX(90deg) translateZ(200px);
+            background: navajowhite;
+        }
+
+        .bottom {
+            transform: rotateX(90deg) translateZ(-200px);
+            background: rebeccapurple;
+        }
+
+        .back {
+            transform: translateZ(-200px);
+            background: aquamarine;
+        }
+
+        .front {
+            transform: translateZ(200px);
+            background: slateblue;
+        }
+
+        .right {
+            transform: rotateY(90deg) translateZ(200px);
+            background: slateblue;
+        }
+
+        #sec3D {
+            height: 375px;
+            width: 500px;
+            perspective: 1000px;
+            position: relative;
+            margin: 50px auto 120px;
+
+        }
+
+        #sec3D::before, #sec3D::after {
+            content: "";
+            height: 100%;
+            width: 100%;
+            display: block;
+            position: absolute;
+            left: 0;
+            top: 0;
+
+        }
+
+        #sec3D::before {
+            background: url("images/jing1.jpg");
+        }
+
+        #sec3D::after {
+            background: url("images/jing2.jpg");
+            transition: 2s;
+            transform-origin: bottom;
+        }
+
+        #sec3D:hover::after {
+            transform: rotateX(-180deg);
+        }
+
+        #yingbi3d {
+            width: 931px;
+            height: 1200px;
+            margin: 300px auto 300px;
+            perspective: 1000px;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: 4s;
+        }
+
+        #yingbi3d::before, #yingbi3d::after {
+            /**
+            相当于各种百分之一百
+             */
+            content: "";
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            display: block;
+            position: absolute;
+        }
+
+        #yingbi3d::before {
+
+            background: url("images/lan.jpg");
+            transform: translateZ(-0);
+        / / 这里的取值根据浏览器有不用的效果
+
+        }
+
+        #yingbi3d::after {
+            background: url("images/hong.jpg");
+            transform: translateZ(1px);
+        / / 同上
+        }
+
+        #yingbi3d:hover {
+            transform: rotateY(180deg);
+        }
+    </style>
+</head>
+<body>
+<ul id="nav">
+    <li><span>正</span><span>上</span></li>
+    <li><span>正</span><span>上</span></li>
+    <li><span>正</span><span>上</span></li>
+</ul>
+<div id="3dMax">
+    <div class="cube">
+        <div class="top">top</div>
+        <div class="bottom">bottom</div>
+        <div class="left">left</div>
+        <div class="right">right</div>
+        <div class="front">front</div>
+        <div class="back">back</div>
+    </div>
+</div>
+<div id="sec3D">
+
+
+</div>
+<div id="yingbi3d"></div>
+<script>
+
+</script>
+</body>
+</html>

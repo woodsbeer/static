@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-3.3.1.min.js"></script>
+    <style>
+
+    </style>
+</head>
+<body>
+<div id="tar" riqi="1219" data-nianfen="1997"></div>
+</body>
+<script>
+    alert($("#tar").riqi);          //没有data前缀，查不出来
+    alert(document.querySelector("#tar").dataset.nianfen);   //可以得到1997
+</script>
+</html>

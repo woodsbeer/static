@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+    <title>Title</title>
+    <script src="jquery-3.3.1.min.js"></script>
+    <style>
+        /**
+        通用css样式
+         */
+        *, ::before, ::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        / / 手机端超链接之类的点击会变色，但是如果已经给标签设置了背景颜色就不会变色，这里直接设为透明 box-sizing: border-box;
+        }
+
+        body {
+            background: #f5f5f5;
+            font-size: 14px;
+            font-family: "微软雅黑", sans-serif;
+        / / 手机端可能没有微软雅黑，后面的是设备的默认字体
+        }
+
+        /**
+        cleanfix清除浮动，放在父容器上，如果子元素全部是float父容器也会有高度
+       **/
+        /*.cleanfix::before,.cleanfix::after{*/
+        /*content: "";*/
+        /*height: 0;*/
+        /*width: 100%;*/
+        /*clear: both;*/
+        /*display: table;*/
+
+        /*}*/
+
+        /**
+        这个也可以清除浮动，overflow: hidden会触发BFC,形成独立的布局空间，是的其内部元素不影响外部元素，浮动会让外部元素布局受影响，所以
+        他有清除浮动的效果
+        **/
+        .cleanfix {
+            overflow: hidden;
+        }
+
+        a {
+            color: #333;
+
+        }
+
+        a:hover {
+            text-decoration: none;
+        }
+        ul,li{
+            list-style: none;
+        }
+
+
+        input {
+            border: none;
+        / / 去除默认会有的边框 -webkit-appearance: none;
+        / / 去除移动端默认样式 outline: none;
+        / / 去除高亮
+
+        }
+
+        /**
+              通用css样式
+                */
+
+        .jdDiv {
+            /*width: 100%;*/
+            max-width: 640px;
+            min-width: 300px;
+            height: 1500px;
+            margin: 0 auto;
+            /*background: royalblue;*/
+            position: relative;
+
+        }
+
+        header.jdH {
+            /**
+            固定位置，滚动也不变
+            **/
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            line-height: 80px;
+            /*background: aqua;*/
+            font-size: 0;
+            z-index: 1000;
+            /*opacity: .6;*/
+
+        }
+
+        header.jdH .heaBox {
+            height: 80px;
+            /*width: 100%;*/
+            max-width: 640px;
+            min-width: 300px;
+            margin: 0 auto;
+            position: relative;
+
+        }
+
+        header.jdH .logo {
+            position: absolute;
+            left: 5px;
+            top: 0px;
+
+            width: 70px;
+            /*height: 50px;*/
+            line-height: 50px;
+            background: rgba(220, 20, 60, 0.7);
+            font-size: 20px;
+            text-align: center;
+            /*margin-left: 30px;*/
+
+        }
+
+        header.jdH form {
+            /*    因为设置了 box-sizing: border-box  */
+            /*所以padding包含在宽高里面，这样实现圣杯布局
+            其左右绝对布局固定*/
+            background: rgba(139, 0, 0, 0.7);
+        /*/ / 透明*/
+        width: 100%;
+            padding-left: 77px;
+            padding-right: 117px;
+            display: inline-block;
+            line-height: 50px;
+            /*/ / 为了照顾下面子元素需要设置行高*/
+            vertical-align: top;
+        }
+
+        header.jdH form input {
+            padding-left: 20px;
+            display: inline-block;
+            width: 100%;
+            border-radius: 40px;
+            height: 50px;
+            vertical-align: middle;
+        / / 必须设置这个，默认的是vertical-alignbaseline会有偏差（为了与幽灵元素y的最下面对齐）
+
+        }
+
+        header.jdH a {
+            position: absolute;
+            top: 0px;
+            right: 5px;
+            line-height: 50px;
+            width: 110px;
+            background: antiquewhite;
+            text-decoration: none;
+            font-size: 27px;
+            text-align: center;
+        }
+
+        .lunBo {
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .lunBo > ul:first-child {
+            width: 1000%;
+            transform: translateX(-10%);
+
+        }
+
+        .lunBo > ul:first-child li {
+            width: 10%;
+            float: left;
+            /*font-size: 0;        // 取消a比img高的那个幽灵节点*/
+        }
+
+        .lunBo > ul:first-child li a {
+            width: 100%;
+            display: block;
+        / / 获取高度
+
+        }
+
+        .lunBo > ul:first-child li a img {
+            width: 100%;
+            display: block;
+        / / a比img是因为img是行内元素，基线对齐，下面留出和y坐下面对齐的空间
+        }
+
+        .lunBo > ul:last-child {
+            width: 78px;
+        / / 根据子元素的长度重新修改他的宽度达成对齐 height: 6 px;
+            position: absolute;
+            bottom: 6px;
+            left: 50%;
+            margin-left: -39px;
+        / / 水平居中
+        }
+
+        .lunBo > ul:last-child li {
+            margin-left: 30px;
+
+            width: 6px;
+            height: 6px;
+            border-radius: 3px;
+            float: left;
+            border: slateblue 1px solid;
+        }
+
+        .lunBo > ul:last-child li:first-child {
+            margin-left: 0;
+        / / 取消第一个li的左边距，为了居中
+        }
+
+        .lunBo > ul:last-child li.now {
+            background: gold;
+        }
+
+        nav.jdNav {
+            width: 100%;
+            margin-top: 33px;
+            background: ghostwhite;
+            padding-top: 15px;
+        }
+
+        nav.jdNav > ul {
+            width: 100%;
+            font-size: 0;
+        }
+
+        nav.jdNav > ul li {
+            width: 33.33%;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+
+        nav.jdNav > ul li a {
+            display: block;
+        }
+
+        nav.jdNav > ul li a div {
+            margin: 0 auto;
+            display: block;
+            height: 50px;
+            width: 50px;
+            background: slateblue;
+        }
+
+        nav.jdNav > ul li a span {
+            display: block;
+            margin: 0px auto;
+            text-align: center;
+            line-height: 30px;
+            font-size: 15px;
+        }
+
+        .jdProducts {
+            width: 100%;
+            padding: 5px;
+            background: white;
+
+        }
+
+        .jdProducts .jdbox {
+            width: 100%;
+            min-height: 300px;
+            background: ghostwhite;
+            margin-top: 10px;
+            box-shadow: 0 0 2px navajowhite;
+        }
+
+        .jdProducts .jdbox .jdBocHea {
+            height: 50px;
+            border-bottom: 1px silver solid;
+        }
+
+        .jdProducts .jdbox .jdBocHea.noborder {
+            border: none;
+        }
+
+        .jdProducts .jdbox .jdBocHea h3 {
+            /**
+            通过相对定位，好操作伪元素
+            */
+            position: relative;
+            font-weight: normal;
+            line-height: 50px;
+            text-indent: 10px;
+        / / 缩进
+
+        }
+
+        .jdProducts .jdbox .jdBocHea h3::before {
+            content: "";
+            height: 20px;
+            width: 4px;
+            background: maroon;
+            position: absolute;
+            left: 3px;
+            top: 15px;
+        }
+
+        .jdProducts .jdbox.jdSk .jdBocHea {
+            background-color: navajowhite;
+        }
+
+        .jdProducts .jdbox.jdSk .jdBocHea span.skTitle {
+
+            line-height: 50px;
+            size: 8px;
+            float: left;
+            text-align: center;
+            margin-left: 4px;
+        }
+
+        .jdProducts .jdbox.jdSk .jdBocHea div.skTime {
+            height: 50px;
+            margin-left: 3px;
+            float: left;
+        }
+
+        .jdProducts .jdbox.jdSk .jdBocHea div.skTime span {
+            font-weight: 900;
+            display: block;
+            float: left;
+            margin-top: 5px;
+            font-size: 18px;
+            text-align: center;
+            margin-left: 5px;
+            height: 40px;
+            line-height: 40px;
+            width: 18px;
+            background: black;
+            color: navajowhite;
+        }
+
+        .jdProducts .jdbox.jdSk .jdBocHea div.skTime span:nth-of-type(3n) {
+            /***
+            3n是三的倍数
+            */
+            width: 10px;
+        }
+
+        .jdProducts .jdbox.jdSk .jdBocHea span.skMore {
+            float: right;
+            line-height: 50px;
+            margin-right: 8px;
+
+        }
+        .jdProducts .jdbox.jdSk .jdBoxBody {
+            width: 100%;
+
+        }
+        .jdProducts .jdbox.jdSk .jdBoxBody ul{
+            width: 100%;
+            display: flex;
+            /*justify-content: space-between;*/
+
+        }
+        .jdProducts .jdbox.jdSk .jdBoxBody ul li{
+
+            /*flex: 33%;*/
+        }
+        .jdProducts .jdbox.jdSk .jdBoxBody ul li a{
+            display: block;
+        }
+        .jdProducts .jdbox.jdSk .jdBoxBody ul li a img{
+            margin: 3px auto;
+            display: block;
+            width: 70%;
+
+        }
+        .fLoaft{
+            float: left;
+        }
+        .rLoaft{
+            float: right;
+        }
+        .widthHalf{
+            width: 50%;
+        }
+        
+        .testSanjiao {
+            float: left;
+            /*width: 11px;*/
+            /*height: 11px;*/
+            /*border: 20px solid chocolate;    //方法1设置上下边框为背景色，去掉左边框，右边框颜色自定*/
+            /*border-top-color:royalblue ;*/
+            /*border-bottom-color: royalblue;*/
+            /*border-left: 0 none;*/
+
+            /*//方法二，设置四个边框颜色透明或者于背景相同，右边为黄色*/
+            border: 20px solid transparent;
+            border-right-color: chocolate;
+
+            position: absolute;
+            top: 350px;
+            left: 40px;
+            /*background: yellow;*/
+
+        }
+
+    </style>
+</head>
+<body>
+<!--<form action="">-->
+<!--<input type="text" width="200" height="80">-->
+<!--</form>-->
+<div class="jdDiv">
+
+    <header class="jdH">
+        <div class="heaBox">
+            <div class="logo">logo</div>
+            <form action="#">
+                <span class="searchSpan"></span>
+                <input class="mySearch" type="search" placeholder="提示占位">
+            </form>
+            <a href="javascript:" class="login">search</a>
+        </div>
+
+    </header>
+    <div class="lunBo">
+        <ul class="cleanfix">
+            <li><a href=""><img src="images/1.jpg" alt="1"></a></li>
+            <li><a href=""><img src="images/2.jpg" alt="2"></a></li>
+            <li><a href=""><img src="images/3.jpg" alt="3"></a></li>
+        </ul>
+        <ul>
+            <li class="now"></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+    <nav class="jdNav">
+        <ul>
+            <li>
+                <a href="javascript:">
+                    <div class="imgInLi"></div>
+                    <span>xxx</span>
+                </a>
+            </li>
+            <li>
+                <a href="javascript:">
+                    <div class="imgInLi"></div>
+                    <span>xxx</span>
+                </a>
+            </li>
+            <li>
+                <a href="javascript:">
+                    <div class="imgInLi"></div>
+                    <span>xxx</span>
+                </a>
+            </li>
+            <li>
+                <a href="javascript:">
+                    <div class="imgInLi"></div>
+                    <span>xxx</span>
+                </a>
+            </li>
+            <li>
+                <a href="javascript:">
+                    <div class="imgInLi"></div>
+                    <span>xxx</span>
+                </a>
+            </li>
+            <li>
+                <a href="javascript:">
+                    <div class="imgInLi"></div>
+                    <span>xxx</span>
+                </a>
+            </li>
+
+        </ul>
+    </nav>
+    <div class="jdProducts">
+        <div class="jdbox jdSk">
+            <div class="jdBocHea noborder">
+                <span class="skTitle">掌上秒杀</span>
+                <div class="skTime">
+                    <span>0</span>
+                    <span>0</span>
+                    <span>:</span>
+                    <span>0</span>
+                    <span>0</span>
+                    <span>:</span>
+                    <span>0</span>
+                    <span>0</span>
+                </div>
+                <span class="skMore">详情</span>
+            </div>
+            <div class="jdBoxBody">
+                <ul>
+                    <li>
+                        <a href="javascript:">
+                            <img src="images/yyf.jpg" alt="">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:">
+                            <img src="images/yyf.jpg" alt="">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:">
+                            <img src="images/yyf.jpg" alt="">
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="jdbox">
+            <div class="jdBocHea">
+                <h3>ddd</h3>
+            </div>
+        </div>
+        <div class="jdbox">
+            <div class="jdBocHea">
+                <h3>dddd</h3>
+            </div>
+        </div>
+    </div>
+
+    <div class="testSanjiao">
+
+    </div>
+
+</div>
+</body>
+</html>

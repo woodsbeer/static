@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- 可选的Bootstrap主题文件（一般不使用） -->
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"></script>
+
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+        .row:after, .row:before{
+            content: "";
+            display: table;
+            clear: both;
+        }
+        .left {
+            background: cadetblue;
+            padding: 10px;
+        }
+
+        .mid {
+            background: darkorchid;  padding: 10px;
+        }
+
+        .right {
+            background: chartreuse ; padding: 10px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="left col-sm-2 col-md-4 col-md-push-10 col-lg-8 col">gdfd fgfdg fdg fdgfd gd gsfs dsd gfd gf drt gdrgdf g drdg e wrgsr
+        </div>
+        <div class="mid left col-sm-4 col-md-4 col-md-pull-3  col-lg-1 col">gdfd fgfdg fdg fdgfd gd gsfs</div>
+        <div class="right  col-sm-6 col-md-4 col-lg-3 col">gdfd fgfdg fdg fdgfd gd gsfs gdfd fgfdg fdg fdgfd gd gsfs gdfd
+            fgfdg fdg fdgfd gd gsfs gdfd fgfdg fdg fdgf
+            d gd gsfs gdfd fgfdg fdg fdgfd ggdfd fgfdg fdg fdgfd gd gsfs gdfd fgfdg fdg fdgfd gd gsfs
+            gdfd fgfdg fdg fdgfd gd gsfs gdfd fgfdg fdg fdgfd gd gsfs d gsfs
+        </div>
+    </div>
+</div>
+</body>
+</html>

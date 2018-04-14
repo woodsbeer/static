@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    alert(leiJia(3));
+    alert(weishuLeijia(154));
+
+    function leiJia(n) {
+        if (n <= 0) {
+            return 0
+        }
+        if (n === 1) {
+            return 1;
+        }
+        else if (n > 1) {
+            return n + leiJia(n - 1);
+        }
+    }
+
+    function weishuLeijia(n) {
+        if (n < 10) {
+            return n;
+        }
+        return n % 10 + weishuLeijia(parseInt(n / 10));
+    }
+
+    function someMath(a, b, fn) {   //这里第三个参数可以任意置换为别的方法，实现不同的算法
+        return fn(a, b);
+    }
+
+    function add(e, r) {
+        return e + r;
+    }
+
+    function jian(a, b) {
+        return a - b;
+    }
+    var result = someMath(5,2,add);  //这里第三个参数可以任意置换为别的方法，实现不同的算法
+    alert("someMath"+result);
+
+</script>
+</body>
+</html>

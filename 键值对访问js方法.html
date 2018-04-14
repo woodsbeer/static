@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var o ={
+        "name":"jojo",
+        "age":18,
+        "eat":function(){
+            console.log("sdds")
+        }
+    };
+    var array = new Array();   //这叫关联数组，实际上是自己定义了数组对象的属性，数组长度还是00
+
+    array["fff"] = "first";
+    array["sss"] = "second";
+    array["ttt"] = "thired";
+    var ss = function () {
+        this.name="theName"
+
+    }
+    var theSs = new ss();
+    for (var i=0;i<3;i++){
+        theSs["n"+i]=i;
+    }
+    alert(theSs.n0+"   "+theSs.n2);
+    alert(typeof o+" "+o.age);   //o的值是object
+
+    for (var key in o){
+        console.log(key+"---"+o[key]);  //必须通过这种方法访问
+        console.log(key+"---"+o.key);  //不存在名为key的建
+
+    }
+    console.log(array.length);
+
+</script>
+</body>
+</html>

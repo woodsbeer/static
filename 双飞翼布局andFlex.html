@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .mainOut, .left, .right {
+            float: left;
+            height: 166px;
+            text-align: center;
+            font-size: 22px;
+        }
+
+        .mainOut {
+            /*float: none;*/
+            width: 100%;
+            min-width: 300px;
+
+        }
+
+        .mainIn {
+            margin: 0 230px 0 200px;
+            background: aqua;
+        }
+
+        .left {
+            width: 190px;
+            background: gold;
+            margin-left: -100%;
+        }
+
+        .right {
+            width: 220px;
+            background: cadetblue;
+            margin-left: -220px;
+        }
+
+        .line {
+            min-width: 300px;
+        }
+
+        .foot {
+            background: teal;
+        }
+
+        #f {
+            background: blueviolet;
+            float: left;
+            width: 100px;
+            height: 200px;
+        }
+
+        #ff {
+            background: blanchedalmond;
+            float: left;
+            width: 100px;
+            height: 200px;
+        }
+
+        .foot2 {
+            width: 500px;
+
+            background: teal;
+        }
+
+        .foot2 div {
+            background: peru;
+            display: inline-block;
+            width: 60px;
+            height: 50px;
+            /*vertical-align: ;*/
+        }
+
+        #ii {
+            width: 50px;
+            height: 40px;
+            background: hotpink;
+        }
+
+        #fd {
+            height: 120px;
+            border: rebeccapurple 1px solid;
+            display: flex;
+            align-items: center;
+
+        }
+
+        #fd .static {
+            flex: 0 0 200px;
+            border: red solid 1px;
+            height: 40px;
+
+        }
+
+        #fd .nos {
+            height: 40px;
+            flex: 1 0 300px;
+            border: 1px solid peru;
+        }
+
+        #fd .Ofour {
+            flex: 0 0 25%;
+            border: darkorchid 1px solid;
+        }
+
+        #fd .Otwo {
+            flex:0 0 50%;
+            border: sandybrown 1px solid;
+        }
+
+        #fd .auTo {
+            flex: 1;
+            border: brown 1px solid;
+        }
+
+        .clearfix::before,
+        .clearfix::after {
+
+                    display: table;
+               content: "";
+
+        }
+
+          
+        .clearfix::after {
+             clear: both;
+        }
+
+        #cl {
+            width: 100%;
+            height: 5px;
+
+            display: inline-block;
+        }
+  .flexHengmoren{
+      height: 300px;
+      border: black 1px dashed;
+      width: 500px;
+      display: flex;
+
+  }
+        .flexHengmoren div{
+            height: 200px;
+           width: 40px;
+            text-align: center;
+        }
+        .flexHengmoren div span{
+      display: block;
+      background: darkgreen;
+      height: 200px;
+      width:60%;
+  }
+          
+    </style>
+</head>
+<body>
+<div class="line">
+    <div class="mainOut">
+        <div class="mainIn">this mid</div>
+    </div>
+    <div class="left">left</div>
+    <div class="right">right</div>
+    <div id="cl"></div>
+</div>
+<div class="foot clearfix">
+    <div id="f"></div>
+    <div id="ff"></div>
+    <div id="cl"></div>
+</div>
+<br>
+<div id="fd" class="clearfix">
+    <div class="static">1</div>
+    <div class="static">2</div>
+    <div class="nos">3</div>
+</div>
+<div id="fd">
+    <div class="Ofour"></div>
+    <div class="Otwo"></div>
+    <div class="auTo"></div>
+</div>
+<div class="flexHengmoren">
+    <div>
+        <span></span>
+    </div>
+    <div><span></span></div>
+    <div><span></span></div>
+</div>
+
+</body>
+</html>

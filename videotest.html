@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .myVideo{
+            border: slateblue 1px dashed;
+            position: relative;
+        }
+        .myVideo video{
+            margin: 200px auto;
+            display: block;
+
+        }
+        .myVideo .newControl{
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            left: 45%;
+            bottom: 32%;
+            z-index: 1000;
+
+        }
+        .myVideo .newControl .goSpan{
+            height: 100%;
+            width: 100%;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 50px;
+            display: block;
+            background: olivedrab;
+        }
+        .myVideo .newControl .pSpan{
+            height: 100%;
+            width: 100%;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 50px;
+            display: block;
+            background: chocolate;
+        }
+    </style>
+</head>
+<body>
+<div class="myVideo">
+    <video id="firstVideo" controls height="400">
+        <source src="images/longge.mp4">
+    </video>
+</div>
+<script>
+    var vids = document.getElementsByTagName("video");
+    for(var i=0;i<vids.length;i++){
+        makeaddControl(vids[i]);
+    }
+    function makeaddControl(video) {
+        video.removeAttribute("controls");
+        var control = document.createElement("div");
+        var play = document.createElement("span");
+        var textGo = document.createTextNode("g");
+        var txtpause = document.createTextNode("p");
+        play.appendChild(txtpause);
+        play.setAttribute("title","play");
+        play.setAttribute("class","pSpan");
+        control.appendChild(play);
+        control.setAttribute("class","newControl");
+        video.parentNode.insertBefore(control,video);
+        
+        play.addEventListener("click",function () {
+            if (video.ended){
+                video.currentTime = 0;
+
+            }
+            else if(video.paused){
+                video.play();
+            }
+            else {
+                video.pause();
+            }
+        })
+        video.addEventListener("pause",function () {
+            play.removeAttribute("paused");
+            play.classList.remove("goSpan");
+            play.classList.add("pSpan");
+            play.removeChild(textGo);
+            play.appendChild(txtpause);
+
+
+        });
+        video.addEventListener("play",function () {
+            play.removeAttribute("played");
+            play.classList.remove("pSpan");
+            play.classList.add("goSpan");
+
+            play.removeChild(txtpause);
+            play.appendChild(textGo);
+
+
+        });
+        video.addEventListener("end",function () {
+          video.pause();
+
+
+        });
+    }
+</script>
+</body>
+</html>

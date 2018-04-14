@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function a1() {
+        alert("a1");
+    }
+
+    function a2() {
+        alert("a2");
+    }
+    function a3() {
+        alert("a3");
+    }
+    function a4() {
+        alert("a4");
+    }
+
+    /**
+     * 通过递归动态灵活的添加onload方法
+     * @param func
+     */
+    function addLoadEvent(func) {
+        var oldLoad = window.onload;
+        if (typeof oldLoad != "function") {
+            if(arguments.length>1){
+                for(var i=0; i<arguments.length;i++){
+                    addLoadEvent(arguments[i]);
+                }
+            }
+            else {
+                window.onload = func;
+            }
+
+        }
+        else {
+            if(arguments.length>1){
+                for(var i=0; i<arguments.length;i++){
+                    addLoadEvent(arguments[i]);
+                }
+            }
+            else {
+                window.onload = function () {
+                    oldLoad();
+                    func();
+                }
+            }
+
+        }
+
+    }
+
+    /**
+     * 可随意调用
+     */
+    addLoadEvent(a1,a2);
+    addLoadEvent(a3,a4);
+    // addLoadEvent(a2);
+
+</script>
+</body>
+</html>

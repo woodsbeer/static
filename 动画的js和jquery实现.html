@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-3.3.1.min.js"></script>
+    <style>
+        #car {
+            height: 200px;
+            width: 480px;
+            background: burlywood;
+            position: absolute;
+            left: 0;
+        }
+        #jQ {
+            height: 200px;
+            width: 480px;
+            background: darkgreen;
+            position: absolute;
+            left: 600px;
+        }
+
+
+    </style>
+</head>
+<body>
+<div id="car">
+    car
+</div>
+<div id="jQ">jq</div>
+<script>
+
+
+    // var tt = setTimeout("alert('dd')",3000);
+    function moveTip(id, left, timeOut) {
+        var moveMent;   //每次先清除
+        clearTimeout(moveMent);
+        // var movement ;
+        console.log(id);
+        var mode = document.getElementById(id);
+        console.log(mode)
+       var mLeft =parseInt(mode.style.left) ;  //没有用js设置left或者没有在元素内嵌设置的话查不出来   第二次调用会报style的空指针
+        if (mLeft == left) {
+            return true
+        }
+        if (mLeft < left-10) {
+            mLeft+=(left-mLeft)/10;            //由快到慢
+        }
+        else if(mLeft<left){
+            mLeft+=Math.ceil((left-mLeft)/10);   // 最小为1
+        }
+        if (mLeft > left+10) {
+            mLeft-=(mLeft-left)/10;
+        }
+        else if (mLeft>left){
+            mLeft-=Math.ceil((mLeft-left)/10);
+        }
+        console.log(mLeft);
+        document.getElementById(id).style.left = mLeft + "px";
+        // mode.style.left =
+        // var fun = ;
+        /**
+         * 注意！ 这里虽然id为string但是依然左右加上引号，最终在里面是"car"
+         * @type {number}
+         */
+        moveMent = setTimeout("moveTip(\"" + id + "\"," + left + "," + timeOut + ")", timeOut);
+        // moveMent = setTimeout("moveTip(" + id + "," + left + "," + timeOut + ")", timeOut);
+
+
+    }
+
+    window.onload = function () {
+
+        var car1 = document.getElementById("car");
+        car1.style.left = "20px";
+        moveTip("car", 400, 10);
+    }
+    $(function () {
+      $("#jQ").animate({top:"300px"},2000);
+    })
+
+</script>
+</body>
+</html>

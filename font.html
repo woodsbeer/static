@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        /*p,div{*/
+            /*display: block;*/
+        /*}*/
+        .out{
+            width: 500px;
+
+        }
+        .out .head{
+            border-bottom: cadetblue 2px solid;
+        }
+        .out .head h3{
+            font: 44px/50px  黑体 blue ;
+            font-variant: small-caps;
+            margin: 0;
+
+        }
+        .out .head h3 span{
+            font: italic 77px bold ;
+            color: sandybrown;
+
+        }
+        .out .body{
+            margin-top: 20px;
+            border-left: olivedrab 2px solid;
+        }
+        .out .body p{
+            font: normal 22px/16px 宋体 ;
+            text-align: justify;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+<div class="out">
+    <div class="head">
+        <h3>
+            <span>No</span>
+            Jjjdsfsdds
+            <br>
+            cYscvvvv
+        </h3>
+    </div>
+    <div class="body">
+        <p>fsdfdsfdsfdsfdsfdsffnsinsdifhsdufhsuifhsduifhsdiufsdfusdhfusdhfidsufhdsuifhsdufsdfshdfuhudfhsdufhdsuf</p>
+    </div>
+</div>
+<script>
+    /**
+     * 为什么n的值不改变
+     * @type {number}
+     */
+    var n = 5;
+    var obj = {
+        value: 1
+    };
+    function foo(o) {
+        o = 2;
+        console.log(o); //2
+    }
+    foo(obj);
+    foo(n);
+    console.log(n);
+    console.log(obj)
+</script>
+</body>
+</html>

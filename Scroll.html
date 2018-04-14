@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-3.3.1.min.js"></script>
+    <style>
+        #red {
+            margin-top: 2000px;
+            margin-left: 400px;
+            height: 300px;
+            width: 300px;
+            background: red;
+            /*display: none;*/
+
+        }
+
+        @keyframes gg {
+            from{
+                background: gold;
+            }
+            to{
+                background: rebeccapurple;
+            }
+        }
+
+        .anima {
+            animation-name: gg;
+            animation-duration: 2s;
+        }
+    </style>
+</head>
+<body>
+<div id="red">
+    sddd
+</div>
+<script>
+    var $div = $("#red");
+    var toTop = $div.offset().top;
+    $(function () {
+        // startAni()
+        // $div.click(function () {
+        //
+        //     alert($(window).scrollTop());
+        // })
+
+        $(window).scroll(function () {
+            if ($(window).scrollTop() + $(window).height() >= toTop) {
+                startAni();
+            }
+        })
+
+    })
+
+    function startAni() {
+        $div.addClass("anima");
+    }
+
+    function theRoll() {
+        // console.log($(document).scrollTop);
+        // console.log($(window).height);
+        // if ($(window).scrollTop + ($(window).height) == toTop) {
+        //     startAni();
+        // }
+        var rollTop = $(window).scrollTop();
+        while (rollTop == 200) {
+            alert(200);
+        }
+    }
+</script>
+</body>
+</html>

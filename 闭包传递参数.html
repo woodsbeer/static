@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-3.3.1.min.js"></script>
+</head>
+<body>
+<div id="collect">
+    <ul>
+        <li>1</li>
+        <li value="2" id="li2" name="cLi">2regergerg</li>
+        <li>3</li>
+        <li>4</li>
+    </ul>
+</div>
+<script>
+
+    /**
+     * 函数作为属性，闭包取得参数
+     * */
+
+    var arrays = new Array();
+    for (var i = 0; i < 10; i++) {
+        arrays[i] = new Object();
+        arrays[i].ff = function (a) {
+            // var a;
+            // a=i;
+            var o = new Object();
+            o.fff = function () {
+                return a;
+            }
+            return o.fff;
+
+        }(i);
+    }
+    //   alert(arrays[5].ff());
+
+    /**
+     * 无法获取text和html，也无法转换为js对象
+     * value和value（）的区别
+     */
+    $(function () {
+        // alert()
+        var lis = $("#collect ul li");
+
+        // alert(lis[1].innerText());
+
+
+        // var lis=$("#collect #li2").text();
+        // alert(lis);
+        var lis = document.getElementById("collect").getElementsByTagName("li");
+        // var wtow = lis.namedItem("cLi").value;
+        var wtow = lis[1].innerText;
+        // alert("test:" + wtow);
+        var div = $("collect");
+
+        //   alert(div[0].text());
+    })
+    $(function () {
+        alert(sth.getName());
+        alert(sth.pName);
+    })
+    var sth = function () {
+      var  pName="pp";
+        return {
+            getName:function(){
+                return pName;
+            }
+        }
+
+    }();
+// console
+</script>
+</body>
+</html>

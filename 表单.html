@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="jquery-3.3.1.min.js"></script>
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #theForm {
+            width: 500px;
+            border: beige 1px solid;
+        }
+
+        #theForm .title {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 40px;
+
+        }
+
+        #theForm .title h2 {
+            font-size: 1em;
+            line-height: 2em;
+            border-left: antiquewhite 2px solid;
+            padding-left: 30px;
+            padding-right: 30px;
+
+        }
+
+        #theForm .form {
+            padding: 6px;
+        }
+
+        #theForm .form div {
+            width: 100%;
+            overflow: hidden;
+
+            margin-bottom: 14px;
+        }
+
+        #theForm .form div label {
+            width: 30%;
+            text-align: right;
+            font-size: 1em;
+            display: inline-block;
+            vertical-align: top;
+
+        }
+
+        #theForm .form div input {
+            vertical-align: top;
+            width: 60%;
+            margin-left: 10px;
+            line-height: 1em;
+        }
+
+        #theForm .form div #miaoShu {
+            height: 3em;
+        }
+        .tab{
+            width:450px ;
+            margin-bottom: 0;
+
+        }
+        .tab ul li{
+            cursor: pointer;
+            position: relative;
+            display: inline-block;
+            text-align: justify;
+            width: 100px;
+            height: 40px;
+            /*border: firebrick 1px solid;*/
+            /*border-bottom: white 1px solid;*/
+            z-index: 999;
+        }
+        .underForm{
+            height: 200px;
+            width: 450px;
+            border: 1px cadetblue solid;
+            position: relative;
+            top: -1px;
+            z-index: 99;
+        }
+    </style>
+</head>
+<body>
+<div id="theForm">
+    <div class="title">
+        <h2>这是标题</h2>
+    </div>
+    <div class="form">
+        <div>
+
+            <label>你的邮箱</label>
+
+            <input type="email">
+        </div>
+
+        <div>
+
+            <label>密码</label>
+
+            <input type="password">
+        </div>
+
+        <div>
+
+            <label>描述</label>
+
+            <input type="text" id="miaoShu">
+        </div>
+
+    </div>
+    <div class="tab">
+        <ul>
+            <li>httfdrh</li>
+            <li>sdfgsd</li>
+            <li>sdfsd</li>
+            <li>sdfsdf</li>
+        </ul>
+    </div>
+    <div class="underForm">
+<lable for="" >
+    <input type="search" height="50" width="300" list="theList">
+
+</lable>
+    </div>
+    <datalist id="theList">          //通过ID和上面绑定
+        <option value="java"></option>
+        <option value="javascrit"></option>
+        <option value="jojo"></option>
+        <option value="dio!!"></option>
+    </datalist>
+</div>
+<script>
+    $(function(){
+        $(".tab ul li").click(function () {
+            // alert()
+            $(this).css({"border":"black 1px solid","border-bottom":"white 1px solid"}).siblings().css({"border":"none"});
+        })
+    })
+</script>
+</body>
+</html>

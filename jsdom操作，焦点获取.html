@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #tar{
+            height: 250px;
+            width: 250px;
+            background: peru;
+        }
+    </style>
+</head>
+<body>
+<div contenteditable="true" id="tar" class="aa bb cc">cfhf</div>
+<input type="button" value="focus" id="but">
+<script>
+    var cs = document.getElementById("tar").className;
+    var csL = cs.split(/\s+/);   //这个正则表达式是一个或多个空格
+    var index;
+    for (var i = 0; i < csL.length; i++) {
+        if (csL[i] === "cc") {
+            index = i;
+            break;
+        }
+
+    }
+    if (index != null) {
+        csL.splice(i, 1);   //在第i位开始替换掉一个
+    }
+    var newCla = csL.join(" ");  //拼接为用空格隔开的字符串
+    // alert(newCla);
+
+    /**
+     * 以上可以用classList替换
+     */
+    document.getElementById("tar").classList.remove("aa");
+    alert(document.getElementById("tar").className);
+    /**
+     * div无法获取焦点，document.activeElement输出的是document，除非设置contenteditable="true"，
+     */
+    document.querySelector(".bb").onclick = function () {
+        alert(document.activeElement.innerHTML);
+    }
+    //input可以获得焦点
+    document.getElementById("but").onclick = function () {
+        alert(document.activeElement.value);
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #myCan{
+            border: aquamarine 1px solid;
+        }
+    </style>
+</head>
+<body>
+<canvas id="myCan" height="500" width="680">
+<p>ppppppppppppp</p>
+</canvas>
+<script>
+
+    var fCanvas = document.getElementById("myCan");
+
+        var ctx = fCanvas.getContext("2d");
+        ctx.beginPath();
+        ctx.moveTo(30,90);
+        ctx.bezierCurveTo(100,20,350,20,420,90);
+        ctx.lineTo(30,90);
+        ctx.closePath();
+        ctx.fillStyle = "rgb(111,21,245)";
+        ctx.strokeStyle  = "rgb(55,188,156)";
+        ctx.lineWidth = 4;
+        ctx.fill();
+        ctx.stroke();
+
+        ctx.strokeStyle ="#FF0000";
+        ctx.beginPath();
+        ctx.arc(100,100,40,0,Math.PI*2,true);
+        ctx.closePath();
+
+        ctx.lineWidth = 2;
+        ctx.stroke();
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-3.3.1.min.js"></script>
+    <style>
+        #top {
+            width: 500px;
+            border: chartreuse 1px solid;
+
+        }
+
+        #top .tab {
+            height: 35px;
+
+        }
+
+        #top .tab ul li {
+            display: inline-block;
+            line-height: 30px;
+            width: 90px;
+            font-size: 25px;
+            /*border: 1px solid violet;*/
+        }
+
+        #top .content .red {
+            display: block;
+            height: 300px;
+            width: 100%;
+            background: firebrick;
+        }
+
+        #top .content .yellow {
+            display: none;
+            height: 300px;
+            width: 100%;
+            background: greenyellow;
+        }
+
+        #top .content .blue {
+            display: none;
+            height: 300px;
+            width: 100%;
+            background: blueviolet;
+        }
+        .active{
+            border: darkgreen 1px solid;
+        }
+
+    </style>
+</head>
+<body>
+<p>lets see <abbr title="Asss Brr Cfdf"></abbr></p>
+<div id="top">
+    <div class="tab">
+        <ul>
+            <li class="active" data-index="red">red</li>
+            <li data-index="yellow">yelllow</li>
+            <li data-index="blue">blue</li>
+        </ul>
+    </div>
+    <div class="content">
+        <div class="yellow">yelllow</div>
+        <div class="blue">blue</div>
+        <div class="red">red</div>
+    </div>
+</div>
+<script>
+    $("#top .tab ul").on("click","li",theCC);
+    function theCC(e) {
+        // alert()
+        var which;
+        var active = document.querySelector(".active");
+        if (active){
+            /**
+             *去掉之前元素的样式
+             **/
+            active.classList.remove("active");
+            which=active.dataset["index"];       //形式1
+            document.querySelector("."+which).style.display="none";
+
+
+        }
+        /**
+         * 当前元素添加样式
+         */
+        this.classList.add("active");
+        // which=this.dataset.index;     //this表示条用此函数的对象
+        which=e.target.dataset.index;        //形式2  //e.target被点击的对象
+        document.querySelector("."+which).style.display="block";
+
+    }
+        var f1 = function () {
+            alert()
+        }();
+    (function f2() {
+        alert()
+    })();
+</script>
+</body>
+</html>

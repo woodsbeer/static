@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-3.3.1.min.js"></script>
+    <style>
+        .hh {
+            height: 35px;
+            line-height: 35px;
+            border-bottom: violet 1px solid;
+            width: 700px;
+            margin: 30px 0 20px 35px;
+        }
+    </style>
+</head>
+<body>
+<p id="fp">sdfsdfsdfsdfsfsefewf</p>
+<form id="ips">
+    <input type="button" id="ii" title="one" value="1"> <input type="button" title="two" value="2">
+    <a href="javascript:wei()">伪协议测试</a>
+    <p>cattr<abbr title="are you ok">mi</abbr></p>
+    <p>vv</p>
+    <p>sdv<abbr title="do you like mi4i">lm4</abbr></p>
+
+</form>
+<div id="add"></div>
+<div id="quote">
+    <blockquote cite="www.baidu.com">
+        <p>
+            ppp xxx cnm
+        </p>
+    </blockquote>
+</div>
+<script>
+    var fp = document.querySelector("#fp");
+    // alert(fp.innerHTML);   //这两个都可以，仅仅是html或者text不可以
+    // alert(fp.innerText);
+    var nv = fp.childNodes[0].nodeValue;
+    // alert(fp.nodeValue);  //null p本身的nodeValue为空
+    // alert(nv);
+    var ips = document.querySelector("#ips");
+    // alert( document.querySelector("#ii").innerHTML);  //没有值
+
+
+    /**
+     * 重点！！！
+     * 最好的批量绑定事件方法
+     *
+     */
+
+    $("#ips").on("click", "input", changeText);
+
+    function changeText(e) {
+        var txt = e.target.getAttribute("title");
+        var fp = document.querySelector("#fp");
+        fp.childNodes[0].nodeValue = txt;
+        // alert(txt);
+        return false;
+
+    }
+
+    function wei() {
+        alert("xx");
+    }
+
+    $("p").on("click", function () {
+        alert("this p")    //给所有p绑定事件
+    });
+    console.log($("p").length);  //4个
+    /**
+     * 通过document.createElement层层添加元素，组装链接起来
+     * @type {HTMLParagraphElement}
+     */
+    var myP = document.createElement("p");
+    var txt1 = document.createTextNode("this ");
+    var div = document.getElementById("add");
+    myP.appendChild(txt1);  //
+    var em1 = document.createElement("em");
+    var txtx = document.createTextNode("is ");
+    em1.appendChild(txtx);
+    myP.appendChild(em1); //
+
+    var txt3 = document.createTextNode("love");
+    myP.appendChild(txt3); //
+    div.appendChild(myP);
+
+    /**
+     * 在某一元素的后面插入一个元素
+     * 如果是前面的话js有自带的insertBrfore方法
+     * @param newEle
+     * @param tarEle
+     */
+    function insertAfter(newEle, tarEle) {
+        var par = tarEle.parentNode;
+        if (tarEle == par.lastChild) {
+            par.appendChild(newEle);
+        }
+        else {
+            par.insertBefore(newEle, tarEle.nextSibling);
+
+        }
+    }
+
+    var tp = document.createElement("p");
+    var ttt = document.createTextNode("textP");
+    tp.appendChild(ttt);
+    insertAfter(tp, ips);
+
+    /**
+     *通过遍历数组生成dl加入body
+     * */
+    function makeAbbrUl() {
+        var array = getAllAbbr();
+        var myH2 = document.createElement("h3");
+        var hTxt = document.createTextNode("this is abbr");
+        myH2.appendChild(hTxt);
+        var dlist = document.createElement("dl");
+        for (key in array) {
+            var dt = document.createElement("dt");
+            var dd = document.createElement("dd");
+            var dtTxt = document.createTextNode(key);
+            var ddTxt = document.createTextNode(array[key]);
+            dt.appendChild(dtTxt);
+            dd.appendChild(ddTxt);
+            dlist.appendChild(dt);
+            dlist.appendChild(dd);
+
+        }
+
+        myH2.classList.add("hh");          //添加类
+        document.body.appendChild(myH2);
+        document.body.appendChild(dlist);
+    }
+
+    /**
+     * 遍历所有abbr，加入数组
+     * @returns {*}
+     */
+    function getAllAbbr() {
+        var abbrs = document.getElementsByTagName("abbr");
+        var title, value;
+        var arrays = new Array();
+
+        if (abbrs.length < 1) {
+            return false
+        }
+        for (var i = 0; i < abbrs.length; i++) {
+            if(abbrs[i].childNodes.length<1){
+                continue;         //如果某一个标签里面没有子元素，就不在遍历他，调到下一个标签
+                                 // 有时候会因为ie浏览器的原因abbr没有值
+            }
+            title = abbrs[i].getAttribute("title");
+            value = abbrs[i].lastChild.nodeValue;
+            arrays[title] = value;
+        }
+        return arrays;
+    }
+
+
+    /**
+     * 在每一个blockquote标签中提取出cite然后放入一个超链接进行展示
+     * @returns {boolean}
+     */
+
+
+    function showQuotes() {
+        var quotes = document.getElementsByTagName("blockquote");
+        if (quotes.length<1){
+            return false;
+        }
+        for (var i=0;i<quotes.length;i++){
+
+            var quote = quotes[length];
+
+            if (!quote.getAttribute("cite")){     //判断有没有cite属性
+                continue;
+            }
+            var resource= quote.getAttribute("cite");
+            var quotechilds = quote.getElementsByTagName("*");   //获得最后一个元素
+            if (quotechilds.length<1){
+                continue;
+            }
+
+            var lastEle = quotechilds[quotechilds.length-1];  //获取最后一个元素，因为最后可能是一个换行文本元素所以不能用lastChild
+
+            var link = document.createElement("a");         //生成a和sup放置链接
+            var linkTxt = document.createTextNode(resource);
+            link.appendChild(linkTxt);
+            link.setAttribute("href",resource);
+            var sup = document.createElement("sup");
+            sup.appendChild(link);
+            // lastEle.appendChild(sup);
+            insertAfter(sup,lastEle);
+        }
+    }
+    makeAbbrUl();
+    showQuotes();
+</script>
+</body>
+</html>
