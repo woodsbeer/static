@@ -227,7 +227,6 @@
 </div>
 <div id="yingbi3d"></div>
 <script>
-    alert()
     var x = 0;
     var tx1 = x+150;
     var tx2 = x-50;
@@ -236,19 +235,19 @@
     var time = null;
     var mode = document.getElementsByClassName("cube")[0];
 // mode.style.transform = "rotateX(420deg) rotateY(290deg)";
-document.ontouchstart=mouseDownLister;
+document.addEventListener("touchstart",mouseDownLister);
     function mouseDownLister(ev) {
 
         var theEvent = ev || event;
         //获得与初始值的差值
         var disX = theEvent.clientX - x;
-        document.ontouchmove= function (ev) {
+        document.addEventListener("touchmove",function (ev) {
             clearTimeout(time);
             var theEvent = ev || event;
             //x的值更改为现在鼠标位置减去按下去时获得的那个差值
             x = theEvent.clientX - disX;
             tx1 = x+150;
-             tx2 = x-50;
+            tx2 = x-50;
             //因为图片命名顺序和实际相反，所以x取反，即左右颠倒
             //为了不转的太快可以让l的值取为x的十分之一
             changeImgByX();
@@ -256,12 +255,12 @@ document.ontouchstart=mouseDownLister;
             lastX = x;
             document.title = x;
 
-        }
-        document.ontouchend = function (ev) {
+        }) ;
+        document.addEventListener("touchend",function (ev) {
             document.onmousemove = null;
             document.onmouseup = null;
             time = setTimeout("moveWork()", 20);
-        };
+        });
         return false;
     };
 
