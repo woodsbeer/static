@@ -227,6 +227,7 @@
 </div>
 <div id="yingbi3d"></div>
 <script>
+    alert()
     var x = 0;
     var tx1 = x+150;
     var tx2 = x-50;
@@ -235,13 +236,13 @@
     var time = null;
     var mode = document.getElementsByClassName("cube")[0];
 // mode.style.transform = "rotateX(420deg) rotateY(290deg)";
-document.onmousedown=mouseDownLister;
+document.ontouchstart=mouseDownLister;
     function mouseDownLister(ev) {
 
         var theEvent = ev || event;
         //获得与初始值的差值
         var disX = theEvent.clientX - x;
-        document.onmousemove = function (ev) {
+        document.ontouchmove= function (ev) {
             clearTimeout(time);
             var theEvent = ev || event;
             //x的值更改为现在鼠标位置减去按下去时获得的那个差值
@@ -256,7 +257,7 @@ document.onmousedown=mouseDownLister;
             document.title = x;
 
         }
-        document.onmouseup = function (ev) {
+        document.ontouchend = function (ev) {
             document.onmousemove = null;
             document.onmouseup = null;
             time = setTimeout("moveWork()", 20);
