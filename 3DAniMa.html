@@ -11,8 +11,8 @@
 
         #nav {
             font-size: 0;
-        /*/ / 取消inline-block的幽灵节点，使得li无间距*/
-           width: 400px;
+            /*/ / 取消inline-block的幽灵节点，使得li无间距*/
+            width: 400px;
             height: 40px;
             margin: 30px 0 30px 50px;
             list-style: none;
@@ -54,12 +54,12 @@
         }
 
         #nav:hover li {
-        /*//鼠标放在ul时li都开始转*/
+            /*//鼠标放在ul时li都开始转*/
             transform: rotateX(-90deg);
         }
 
         #nav li:nth-child(1) {
-        /*//每个li设置延迟*/
+            /*//每个li设置延迟*/
             transition-delay: 0.3s;
         }
 
@@ -83,9 +83,9 @@
 
         }
 
-        .cube:hover {
-            transform: rotateX(420deg) rotateY(290deg);
-        }
+        /*.cube:hover {*/
+            /*transform: rotateX(420deg) rotateY(290deg);*/
+        /*}*/
 
         .left, .right, .top, .back, .front, .bottom {
             width: 100%;
@@ -227,7 +227,75 @@
 </div>
 <div id="yingbi3d"></div>
 <script>
+    var x = 0;
+    var tx1 = x+150;
+    var tx2 = x-50;
+    var speed = 0;
+    var lastX = 0;
+    var time = null;
+    var mode = document.getElementsByClassName("cube")[0];
+// mode.style.transform = "rotateX(420deg) rotateY(290deg)";
+document.onmousedown=mouseDownLister;
+    function mouseDownLister(ev) {
 
+        var theEvent = ev || event;
+        //获得与初始值的差值
+        var disX = theEvent.clientX - x;
+        document.onmousemove = function (ev) {
+            clearTimeout(time);
+            var theEvent = ev || event;
+            //x的值更改为现在鼠标位置减去按下去时获得的那个差值
+            x = theEvent.clientX - disX;
+            tx1 = x+150;
+             tx2 = x-50;
+            //因为图片命名顺序和实际相反，所以x取反，即左右颠倒
+            //为了不转的太快可以让l的值取为x的十分之一
+            changeImgByX();
+            speed = x - lastX;
+            lastX = x;
+            document.title = x;
+
+        }
+        document.onmouseup = function (ev) {
+            document.onmousemove = null;
+            document.onmouseup = null;
+            time = setTimeout("moveWork()", 20);
+        };
+        return false;
+    };
+
+    function moveWork() {
+        x += speed;
+
+        tx1 = x+150;
+       tx2 = x-50;
+        if (speed > 0) {
+            speed--;
+        }
+        else if (speed == 0) {
+            clearTimeout(time);
+        }
+        else {
+            speed++;
+        }
+        changeImgByX();
+        time = setTimeout("moveWork()", 30);
+    }
+    function changeImgByX() {
+
+        // //为了不转的太快可以让l的值取为x的十分之一
+        // if (x)
+        //     var l = parseInt((-x) / 10);
+        //
+        // if (l < 0) {
+        //     l = l - (Math.floor(l / 77)) * 77;
+        // }
+        // else {
+        //     l = l % 360;
+        // }
+
+        mode.style.transform = "rotateX("+tx1+"deg) rotateY("+tx2+"deg)";
+    }
 </script>
 </body>
 </html>

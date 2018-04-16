@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .mode {
+            height: 300px;
+            width: 500px;
+            background: rgba(229, 202, 20, 0.94);
+        }
+    </style>
+</head>
+<body>
+<div class="mode">
+    <img id="modeImg" src="images/img/miaov%20(0).jpg" alt="">
+</div>
+<script>
+    var mode = document.getElementsByClassName("mode")[0];
+    var modeImg = document.getElementById("modeImg");
+    var imgs = document.getElementsByTagName("img");
+    var lastImg = modeImg;
+    var x = 0;
+    var speed = 0;
+    var lastX = 0;
+    var time = null;
+
+    document.onmousedown = mouseDownLister;
+        function mouseDownLister(ev) {
+            for (var i = 1; i < 77; i++) {
+                var newImg = document.createElement("img");
+                newImg.src = "images/img/miaov%20(" + i + ").jpg";
+                newImg.style.display = "none";
+                mode.appendChild(newImg);
+            }
+            var theEvent = ev || event;
+            //获得与初始值的差值
+            var disX = theEvent.clientX - x;
+            document.onmousemove = function (ev) {
+                clearTimeout(time);
+                var theEvent = ev || event;
+                //x的值更改为现在鼠标位置减去按下去时获得的那个差值
+                x = theEvent.clientX - disX;
+                //因为图片命名顺序和实际相反，所以x取反，即左右颠倒
+                changeImgByX();
+                speed = x - lastX;
+                lastX = x;
+                // document.title = l;
+            }
+            document.onmouseup = function (ev) {
+                document.onmousemove = null;
+                document.onmouseup = null;
+                time = setTimeout("moveWork()", 20);
+            };
+            return false;
+        };
+
+    function moveWork() {
+        x += speed;
+
+        if (speed > 0) {
+            speed--;
+        }
+        else if (speed == 0) {
+            clearTimeout(time);
+        }
+        else {
+            speed++;
+        }
+        changeImgByX();
+        time = setTimeout("moveWork()", 30);
+    }
+
+    function changeImgByX() {
+
+        //为了不转的太快可以让l的值取为x的十分之一
+        if (x)
+            var l = parseInt((-x) / 10);
+
+        if (l < 0) {
+            l = l - (Math.floor(l / 77)) * 77;
+        }
+        else {
+            l = l % 77;
+        }
+        // var modeImg = document.getElementById("modeImg");
+        // modeImg.setAttribute("src","images/img/miaov%20("+77-l+").jpg");
+
+        // modeImg.src="images/img/miaov%20("+l+").jpg";
+        if (lastImg != imgs[l]) {
+            //lastimg是引用对象，他和modeImg其实是一样的，这里换成modeImg也一样
+            //把旧的设为不可见，新的可见，新的替换旧的
+            lastImg.style.display = "none";
+            imgs[l].style.display = "block";
+            lastImg = imgs[l];
+
+        }
+    }
+
+</script>
+</body>
+</html>

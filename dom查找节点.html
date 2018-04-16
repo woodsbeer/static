@@ -6,6 +6,7 @@
 </head>
 <body>
 <div class="head">
+    <h>hhhh</h>
     <h4>ddsdsd</h4>
 
     <ul>
@@ -34,6 +35,24 @@
         }
         return null;
     };
+    /**
+     *
+     * ul的第一个子元素是空白文字节点
+     * ul.childNodes.length的值为li的个数加上li的文本节点加上ul的空白文本节点
+     * */
+    var fLi = document.getElementsByTagName("ul")[0].childNodes[3];
+    var txt = fLi.innerHTML;
+    alert("ul的子元素个数为:"+document.getElementsByTagName("ul")[0].childNodes.length)
+    alert("第3个："+txt);
+    var div = document.getElementsByClassName("head")[0];
+    /**
+     * div的第一个子元素是空白节点
+     * 第二个才是《h》
+     * h的firstchild和lastchild都可以找到文本节点
+     * @type {string | null}
+     */
+    var hTxt = div.childNodes[1].lastChild.nodeValue;
+    console.log("hh :"+hTxt);
 </script>
 </body>
 </html>
