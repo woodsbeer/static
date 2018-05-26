@@ -1,0 +1,46 @@
+@charset "utf-8";
+/* CSS Document */
+/*
+color:red !important;/* Firefox、IE7支持
+_color:red;  IE6支持
+*color:red;  IE6、IE7支持
+*+color:red; IE7支持/
+color:red\9; IE6、IE7、IE8支持
+color:red\0; IE8支持
+@media screen and(-webkit-min-device-pixel-ratio:0){} chrome
+filter:progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr='#99000000', EndColorStr='#99000000');
+_filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/templets/ftwcm/image/bg_index.body1.png');_background:none;
+_top:expression(eval(document.documentElement.scrollTop+document.documentElement.clientHeight*0.3));}
+behavior:url('');
+*/
+
+
+/*--标签--*/
+*{}
+html, body, div, span, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, address, big, cite, code, del, em, font, img, ins, small, strong, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend {margin: 0;padding: 0;}
+/*html{_background-image:url(about:blank);_background-attachment:fixed;}*/
+body{-webkit-text-size-adjust:none;font-size:14px;color:#909090;line-height:180%;font-family:'微软雅黑';}
+ol,ul,li{list-style:none outside none;}
+a{text-decoration:none;color:#999;}
+a:hover{color:#666;}
+a img{border:0 none;}
+table,tr,td,th{border-collapse:collapse;padding:0; margin:0;}
+img{vertical-align: middle;}
+h1{font-size:18px;}
+h2{font-size:16px;}
+h3{font-size:14px;}
+h4{font-size:12px;}
+input,textarea{padding:0 2px;border:none; resize:none;}
+
+/*--类--*/
+.block{width:935px;margin:0 auto;}
+.clear{clear:both;height:0;overflow:hidden;}
+.clear10{height:10px;overflow:hidden;clear:both;}
+.left{float:left;}
+.right{float:right;}
+.mt10{margin-top:10px;}
+.mr10{margin-right:10px;}
+.mb10{margin-bottom:10px;}
+.ml10{margin-left:10px;}
+.hide{display:none;}
+/*.input1{background:url(../image/by/input1.png) left top no-repeat;width:420px;height:29px;line-height:29px;padding:0 10px;}*/

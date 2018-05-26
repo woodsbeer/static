@@ -1,0 +1,492 @@
+.header {
+    position: fixed;
+    top: 0;
+    height: 132px;
+    width: 100%;
+    background: url('../images/header_bg.png') repeat-x;
+    color: aliceblue;
+}
+
+.header .h_content {
+    margin: 0 auto;
+    height: 124px;
+    line-height: 124px;
+    width: 980px;
+    position: relative;
+
+}
+
+.header .h_content .logo {
+    background: url("../images/logo.jpg") no-repeat;
+    height: 51px;
+    width: 208px;
+    position: relative;
+    top: -30px;
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 35px;
+    text-align: left;
+
+}
+
+.header .h_content .h_tel {
+    display: inline-block;
+    position: absolute;
+    right: 140px;
+    vertical-align: top;
+    margin-top: 15px;
+    line-height: 20px;
+
+}
+
+.header .h_content .h_tel span {
+    background: url("../images/index_icon.png");
+    height: 20px;
+    width: 20px;
+    vertical-align: middle;
+    margin-right: 8px;
+    display: inline-block;
+}
+
+.header .h_content .h_tel a {
+    font-size: 16px;
+    line-height: 18px;
+    height: 18px;
+    color: aliceblue;
+    padding: 0 5px;
+    border-left: 2px solid #666666;
+    margin-left: 4px;
+}
+
+.header .h_content .weiBo {
+    display: inline-block;
+    position: absolute;
+    right: 30px;
+    vertical-align: top;
+    margin-top: 15px;
+    line-height: 20px;
+
+    height: 20px;
+
+}
+
+.header .h_content .weiBo a {
+    display: inline-block;
+    vertical-align: middle;
+    height: 20px;
+    width: 20px;
+    margin-left: 5px;
+}
+
+.header .h_content .weiBo a.wb {
+    background: url("../images/index_icon.png") -19px top;
+}
+
+.header .h_content .weiBo a.wx {
+    background: url("../images/index_icon.png") -39px top;
+}
+
+.header .h_content .weiBo a.wf {
+    background: url("../images/index_icon.png") -59px top;
+}
+
+.header .h_ulDiv {
+    position: absolute;
+    top: 84px;
+    height: 40px;
+}
+
+.header .h_ulDiv ul {
+
+}
+
+.header .h_ulDiv ul li {
+    display: inline-block;
+    height: 40px;
+}
+
+.header .h_ulDiv ul li:hover {
+    background: rgba(241, 111, 12, 0.96);
+}
+
+.header .h_ulDiv ul li a {
+    display: inline-block;
+    width: 96px;
+    text-align: center;
+    font-size: 16px;
+    line-height: 40px;
+    color: aliceblue;
+}
+
+.header .searchDiv {
+    background: url("../images/search_bg.png") no-repeat;
+    height: 58px;
+    width: 181px;
+    position: absolute;
+    bottom: -3px;
+    right: 10px;
+    z-index: 9999;
+
+}
+
+.header .searchDiv form {
+    /*display: inline-block;*/
+    /*vertical-align: center;*/
+    /*height: 20px;*/
+    margin: 15px 22px -2px 30px;
+
+}
+
+.header .searchDiv form .search {
+    /*display: inline-block;*/
+    /*vertical-align: center;*/
+    width: 100px;
+    height: 20px;
+    font-size: 14px;
+    line-height: 20px;
+    background: none;
+    border: none;
+    float: left;
+
+}
+
+.header .searchDiv form .submit {
+    /*display: inline-block;*/
+    /*vertical-align: middle;*/
+    width: 22px;
+    height: 20px;
+    font-size: 14px;
+    line-height: 20px;
+    background: none;
+    float: left;
+
+}
+
+.header .secUlDiv {
+    position: absolute;
+    height: 50px;
+    display: none;
+    line-height: 50px;
+    width: 100%;
+    background-color: rgba(164, 164, 164, 0.65);
+    z-index: 9998;
+
+}
+
+.header .secUlDiv div {
+    display: none;
+    height: 100px;
+    /*z-index: 9998;*/
+
+}
+
+.header .secUlDiv div a {
+
+    text-align: center;
+    margin: 0 20px;
+    font-size: 16px;
+    line-height: 100%;
+}
+
+.fixBigDiv {
+    height: 77%;
+    width: 100%;
+    position: fixed;
+    top: 124px;
+    overflow: hidden;
+    z-index: -1;
+}
+
+.fixBigDiv .frame {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+
+}
+
+.fixBigDiv .frame a {
+    overflow: hidden;
+}
+
+.fixBigDiv .frame a img {
+    margin: 0 auto;
+    height: 100%;
+    left: 0;
+    top: 0;
+    z-index: 100;
+    position: absolute;
+    display: none;
+}
+
+.fixBigDiv #jsItems {
+    bottom: 39px;
+    right: 50px;
+    overflow: hidden;
+    position: absolute;
+    float: left;
+    z-index: 9999;
+}
+
+/*#theimgsGoDiv #jsItems .chos {*/
+/*background: url("../images/adindex.gif") no-repeat center 39px aquamarine;*/
+/*color: #FFFFFF;*/
+/*}*/
+
+.fixBigDiv #jsItems a {
+    height: 14px;
+    width: 14px;
+    margin-right: 10px;
+    cursor: pointer;
+    display: inline-block;
+    background: url("../images/dot1.png") left top;
+    overflow: hidden;
+}
+
+.fixBigDiv #jsItems a:hover {
+    text-decoration: none;
+    /*background: aquamarine;*/
+}
+
+.fixBigDiv #jsItems a.chos {
+    background: url("../images/dot1.png") right top;
+}
+
+.bodyDiv {
+    margin-top: 652px;
+    position: relative;
+}
+
+.bodyDiv .index1 {
+    color: #000;
+    background: #FFF url("../images/index_bg1.png") left 440px repeat-x;
+}
+
+.bodyDiv .index1 .map {
+    background: url("../images/map.png") center 60px no-repeat;
+}
+
+.bodyDiv .index1 h1 {
+    text-align: center;
+    height: 100px;
+    line-height: 100px;
+    font-size: 40px;
+    letter-spacing: 12px;
+}
+
+.bodyDiv .index1 p.bodyP1 {
+    text-align: center;
+    line-height: 150%;
+    margin-top: 10px;
+    font-size: 18px;
+}
+
+.bodyDiv .index1 .pZuhe {
+    margin-top: 30px;
+    padding-left: 33%;
+    height: 150px;
+
+}
+
+.bodyDiv .index1 .pZuhe .num {
+    display: inline-block;
+    line-height: 150px;
+    vertical-align: center;
+    font-size: 80px;
+    font-weight: bold;
+}
+
+.bodyDiv .index1 .pZuhe .fuHao {
+    padding-top: 32px;
+    display: inline-block;
+    vertical-align: top;
+    font-size: 45px;
+}
+
+.bodyDiv .index1 .pZuhe p {
+    margin-left: 10px;
+    padding-top: 32px;
+    display: inline-block;
+    vertical-align: top;
+    font-size: 24px;
+}
+
+.bodyDiv .index1 .childsDiv {
+    margin: 25px auto;
+    text-align: center;
+
+}
+
+.bodyDiv .index1 .childsDiv .childItem {
+    height: 135px;
+    width: 230px;
+    margin-right: 10px;
+    display: inline-block;
+    position: relative;
+    background: url("../images/childs_bg.png") 0 0 no-repeat;
+}
+
+.bodyDiv .index1 .childsDiv .childItem :nth-child(2) {
+    background-position: -230px 0;
+}
+
+.bodyDiv .index1 .childsDiv .childItem :nth-child(3) {
+    background-position: -460px 0;
+}
+
+.bodyDiv .index1 .childsDiv .childItem :nth-child(4) {
+    background-position: -690px 0;
+    margin-right: 0;
+}
+
+.bodyDiv .index1 .childsDiv .childItem h1 {
+    color: aliceblue;
+    font-size: 22px;
+    margin: 70px 0 0 15px;
+    line-height: 25px;
+    height: 25px;
+    text-align: left;
+    font-weight: 500;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.bodyDiv .index1 .childsDiv .childItem h3 {
+    color: aliceblue;
+    font-size: 17px;
+    margin: 0 0 0 15px;
+    text-align: left;
+    font-weight: 700;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.bodyDiv .index1 .childsDiv .childItem span.s1 {
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    height: 110px;
+    width: 130px;
+    background: url("../images/childs.png") -670px top;
+    display: block;
+}
+
+.bodyDiv .index1 .childsDiv .childItem span.s2 {
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    height: 110px;
+    width: 130px;
+    background: url("../images/childs.png") -670px -110px;
+    display: none;
+}
+
+.bodyDiv .index1 .lastP {
+    margin: 0 auto;
+    text-indent: 2em;
+    width: 70%;
+    color: #FFF;
+}
+
+.bodyDiv .index2 {
+
+    background: #f28047;
+    position: relative;
+    /*top: -40px;*/
+
+}
+
+.bodyDiv .index2 .index2Con {
+    width: 945px;
+    margin: 0 auto;
+    padding-top: 40px;
+}
+
+.bodyDiv .index2 .title {
+    width: 370px;
+    height: 60px;
+    text-align: center;
+    line-height: 60px;
+    /*margin-top: 20px;*/
+    padding-left: 10px;
+    font-size: 30px;
+    color: #FFFFFF;
+    background: #ff8511;
+}
+
+.bodyDiv .index2 .index2Con .keChengLunboDiv {
+    margin: 20px auto;
+    width: 945px;
+    position: relative;
+    height: 187px;
+}
+
+.bodyDiv .index2 .index2Con .keChengLunboDiv a.pre {
+    height: 49px;
+    width: 19px;
+    position: absolute;
+    left: -30px;
+    top: 70px;
+    background: url("../images/arrow1.png") left top;
+}
+
+.bodyDiv .index2 .index2Con .keChengLunboDiv a.next {
+    height: 49px;
+    width: 19px;
+    position: absolute;
+    right: -30px;
+    top: 70px;
+    background: url("../images/arrow1.png") right top;
+}
+
+.bodyDiv .index2 .index2Con .keChengLunboDiv .orangeFrame {
+    width: 950px;
+    height: 187px;
+    overflow: hidden;
+
+}
+
+.bodyDiv .index2 .index2Con .keChengLunboDiv .orangeFrame .scroll {
+    width: 2244px;
+    height: 187px;
+}
+
+.keChengLunboDiv .orangeFrame .scroll .classItem {
+    height: 187px;
+    width: 187px;
+    float: left;
+    text-align: center;
+    color: #FFFFFF;
+    font-size: 24px;
+
+}
+
+.keChengLunboDiv .orangeFrame .scroll .classItem a {
+    display: block;
+    height: 190px;
+    width: 190px;
+    z-index: 199;
+
+}
+.keChengLunboDiv .orangeFrame .scroll .classItem a table{
+    height: 190px;
+    width: 190px;
+    margin: 0;
+    padding: 0;
+    border-collapse: collapse;
+
+}
+.scroll .classItem a table tbody{
+    vertical-align: middle;
+    display:  table-row-group;;
+}
+.scroll .classItem a table tbody td.small{
+    background: url("../images/kc_yuan (1).png") center center no-repeat;
+    display: table-cell;
+}
+
+.scroll .classItem a table tbody td.big {
+    display: none;
+    background: url("../images/kc_yuan1.png") center center no-repeat;
+}
+
+
+
