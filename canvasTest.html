@@ -3,40 +3,95 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <script src="jquery-3.3.1.min.js"></script>
     <style>
-        #myCan{
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #myCan {
             border: aquamarine 1px solid;
+        }
+
+        /**
+        父元素的padd才可以让子元素的上边下移
+         */
+        .out {
+            height: 120px;
+            width: 120px;
+            background: #d45d5c;
+            padding-top: 10px;
+            position: relative;
+        }
+
+        .out .inner {
+            border: #333333 1px dashed;
+            height: 80px;
+            padding-top: 10px;
+            margin-top: 10px;
+            width: 100%;
+            background: #fff811;
+            /*position: absolute;*/
         }
     </style>
 </head>
 <body>
 <canvas id="myCan" height="500" width="680">
-<p>ppppppppppppp</p>
+    <p>ppppppppppppp</p>
 </canvas>
+<DIV class="out">
+    <div class="inner"></div>
+</DIV>
 <script>
 
     var fCanvas = document.getElementById("myCan");
 
-        var ctx = fCanvas.getContext("2d");
-        ctx.beginPath();
-        ctx.moveTo(30,90);
-        ctx.bezierCurveTo(100,20,350,20,420,90);
-        ctx.lineTo(30,90);
-        ctx.closePath();
-        ctx.fillStyle = "rgb(111,21,245)";
-        ctx.strokeStyle  = "rgb(55,188,156)";
-        ctx.lineWidth = 4;
-        ctx.fill();
-        ctx.stroke();
+    var ctx = fCanvas.getContext("2d");
+    ctx.beginPath();
+    ctx.moveTo(30, 90);
+    ctx.bezierCurveTo(100, 20, 350, 20, 420, 90);
+    ctx.lineTo(30, 90);
+    ctx.closePath();
+    ctx.fillStyle = "rgb(111,21,245)";
+    ctx.strokeStyle = "rgb(55,188,156)";
+    ctx.lineWidth = 4;
+    ctx.fill();
+    ctx.stroke();
 
-        ctx.strokeStyle ="#FF0000";
-        ctx.beginPath();
-        ctx.arc(100,100,40,0,Math.PI*2,true);
-        ctx.closePath();
+    ctx.strokeStyle = "#FF0000";
+    ctx.beginPath();
+    ctx.arc(100, 100, 40, 0, Math.PI * 2, true);
+    ctx.closePath();
 
-        ctx.lineWidth = 2;
-        ctx.stroke();
+    ctx.lineWidth = 2;
+    ctx.stroke();
+    /**
+     *相对于父容器
+     * @type {jQuery}
+     */
+    var innerTop = $(".inner").get(0).offsetTop;
+    var innerLeft = $(".inner").get(0).offsetLeft;
 
+    // //如果子元素不是position absolute，计算上层元素的padding
+    // var innerTop = $(".inner").position().top;
+    // //转化为js对象
+    // //计算上层的padding和自身的margin
+    // var innerTopOff = $(".inner").get(0).offsetTop;
+    //
+    // // var zhongdian = innerTop+10;
+    // console.log(innerTop);
+    // console.log(innerTopOff);
+    //
+    $(".inner").css({"left": innerLeft + "px", "top": innerTop + "px"});
+    $(".inner").css("position", "absolute");
+    //注意取消margin
+    $(".inner").css("margin", "0");
+
+    /**
+     * 移动到某距离
+     */
+    // $(".inner").animate({top:10+"px"},2000);
 
 </script>
 </body>

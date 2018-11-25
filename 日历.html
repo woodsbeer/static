@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-3.3.1.min.js"></script>
+    <style>
+        *{
+            font-family: "微软雅黑", sans-serif;
+        }
+        .out {
+            margin: 140px auto;
+            width: 700px;
+            height: 400px;
+            border: #fff811 2px solid;
+            box-shadow: 0 0 4px #ffda7e;
+        }
+
+        .out .headTime {
+            display: block;
+            height: 28px;
+            /*width: 120px;*/
+            line-height: 28px;
+            margin: 21px auto;
+            font-size: 16px;
+            text-align: center;
+        }
+
+        .out .headTime .changeMouth {
+            margin-left: 15px;
+            margin-right: 15px;
+            /*对于文本不需要vertical-align: middle，设置行高就行了*/
+            /*vertical-align: middle;*/
+            display: inline-block;
+            height: 28px;
+            line-height: 28px;
+            text-align: center;
+            font-size: 17px;
+            font-weight: bold;
+
+        }
+
+        .out .headTime .changeMouth:hover {
+            cursor: pointer;
+        }
+
+        .out .headTime span {
+            vertical-align: middle;
+            font-size: 18px;
+            margin-right: 7px;
+
+        }
+
+        .out table {
+            height: 300px;
+            width: 540px;
+            border: #ffda7e 1px solid;
+            margin: 22px auto;
+            border-collapse: collapse;
+        }
+
+        .out table thead th {
+            background: rgba(184, 149, 44, 0.78);
+            height: 36px;
+        }
+
+        .out table th, td {
+
+            border: 1px #4a5607 solid;
+            text-align: center;
+        }
+
+        .out table td span.predays {
+            color: rgba(64, 64, 51, 0.78);
+        }
+    </style>
+</head>
+<body>
+<div class="out">
+    <div class="headTime">
+        <div class="changeMouth">
+            pre
+        </div>
+        <span class="year"></span>年
+        <span class="mouth"></span>月
+
+        <div class="changeMouth">
+            next
+        </div>
+    </div>
+    <table class="riLiBody">
+        <thead>
+        <tr>
+            <th>周日</th>
+            <th>周一</th>
+            <th>周二</th>
+            <th>周三</th>
+            <th>周四</th>
+            <th>周五</th>
+            <th>周六</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        </tbody>
+
+
+    </table>
+</div>
+<script>
+    var td = document.getElementsByTagName("td");
+    var changeMthBut = $(".changeMouth");
+    var yTxt = $(".year");
+    var mTxt = $(".mouth");
+
+    // alert(nectBut.html());
+    var date = new Date();
+    var nYear = date.getFullYear();
+    var nMth = date.getMonth();
+    var day = date.getDate();
+
+
+    var mthDays = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+    changeMthBut.on("click",changeMth);
+    upDate();
+
+    function upDate() {
+        yTxt.text(nYear);
+        mTxt.text(nMth + 1);
+        var data = [];
+
+        var days = getMonthDays(nYear, nMth);
+        //礼拜天是6，礼拜一是0
+        var iWeek = new Date(nYear, nMth, 7).getDay();
+
+        var lastMthDays = getMonthDays(nYear, nMth - 1);
+        //上月
+        if ((iWeek >= 0)&&(iWeek<6)) {
+            for (var i = iWeek+1; i > 0; i--) {
+                var d = lastMthDays - i + 1;
+                data.push("<span class='predays'>" + d + "</span>");
+            }
+
+        }
+        //本月
+        for (var i = 1; i <= days; i++) {
+            data.push(i);
+        }
+        //下月
+        var nextMthDay = 35 - data.length;
+        for (var i = 1; i <= nextMthDay; i++) {
+
+            data.push("<span class='predays'>" + i + "</span>");
+        }
+
+        for (var i = 0; i < td.length; i++) {
+            td[i].innerHTML = data[i];
+        }
+
+    }
+function changeMth() {
+        // alert($(this).text())
+    var thisTxt = $(this).text();
+    var txt = "pre";
+    if (thisTxt.indexOf(txt)!=-1){
+        nMth--;
+        if (nMth < 0) {
+            nMth = 11;
+            nYear--;
+
+        }
+
+    }
+    else {
+        nMth++;
+
+        if (nMth > 11) {
+            nMth = 0;
+            nYear++;
+        }
+    }
+
+
+        upDate();
+
+}
+
+    function getMonthDays(y, m) {
+        if (m < 0) {
+            m = 11;
+        }
+        if (m > 11) {
+            m = 0;
+        }
+        if (m == 1) {
+            return ((y % 4 == 0 && y % 100 != 0) || y % 400 == 0) ? 29 : 28;
+        } else {
+            return mthDays[m];
+        }
+    }
+
+</script>
+</body>
+</html>

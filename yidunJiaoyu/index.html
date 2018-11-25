@@ -163,8 +163,8 @@
                                 <table>
                                     <tbody>
                                     <tr>
-                                        <td class="small">英语课程</td>
-                                        <td class="big">英语课程</td>
+                                        <td class="small">11</td>
+                                        <td class="big">11</td>
                                     </tr>
                                     </tbody>
                                 </table>
@@ -175,8 +175,8 @@
                                 <table>
                                     <tbody>
                                     <tr>
-                                        <td class="small">英语课程</td>
-                                        <td class="big">英语课程</td>
+                                        <td class="small">22</td>
+                                        <td class="big">22</td>
                                     </tr>
                                     </tbody>
                                 </table>
@@ -187,8 +187,8 @@
                                 <table>
                                     <tbody>
                                     <tr>
-                                        <td class="small">英语课程</td>
-                                        <td class="big">英语课程</td>
+                                        <td class="small">33</td>
+                                        <td class="big">33</td>
                                     </tr>
                                     </tbody>
                                 </table>
@@ -199,8 +199,8 @@
                                 <table>
                                     <tbody>
                                     <tr>
-                                        <td class="small">英语课程</td>
-                                        <td class="big">英语课程</td>
+                                        <td class="small">44</td>
+                                        <td class="big">44</td>
                                     </tr>
                                     </tbody>
                                 </table>
@@ -211,8 +211,8 @@
                                 <table>
                                     <tbody>
                                     <tr>
-                                        <td class="small">英语课程</td>
-                                        <td class="big">英语课程</td>
+                                        <td class="small">55</td>
+                                        <td class="big">55</td>
                                     </tr>
                                     </tbody>
                                 </table>
@@ -223,8 +223,20 @@
                                 <table>
                                     <tbody>
                                     <tr>
-                                        <td class="small">英语课程</td>
-                                        <td class="big">英语课程</td>
+                                        <td class="small">66</td>
+                                        <td class="big">66</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </a>
+                        </div>
+                        <div class="classItem">
+                            <a href="javascript:">
+                                <table>
+                                    <tbody>
+                                    <tr>
+                                        <td class="small">77</td>
+                                        <td class="big">77</td>
                                     </tr>
                                     </tbody>
                                 </table>
@@ -241,6 +253,7 @@
 
 <script>
     $(function () {
+
         $('.h_ulDiv ul').on('mouseover', 'li', ulOut);
         $('.secUlDiv>div').mouseleave(ulHind);
 
@@ -273,27 +286,55 @@
         $('.childItem').bind('mouseover', hover).mouseleave(hoverOut);
 
 
-        $('.orangeFrame').mScroll({
-
-            auto : 1,             //自动开始
-            direction : "h",           //h横向,v纵向
-            isfocus : 0,             //是否作为焦点图
-            speed : 800,           //滚动速度
-            delay : 5000,          //自动滚动延迟
-            size :　1,            //最小子元素个数
-            nav : null,          //导航
-            prev : $('.pre'),          //前一个按钮
-            next : $('.next'),          //后一个按钮
-            arrow : 1,             //是否反转
-            cycle : 1              //是否循环
-        })
-        $('.orangeFrame').mouseover(function () {
-            $(this).find(".small").hide();
-            alert()
+        // $('.orangeFrame').mScroll({
+        //
+        //     auto : 1,             //自动开始
+        //     direction : "h",           //h横向,v纵向
+        //     isfocus : 0,             //是否作为焦点图
+        //     speed : 800,           //滚动速度
+        //     delay : 5000,          //自动滚动延迟
+        //     size :　1,            //最小子元素个数
+        //     nav : null,          //导航
+        //     prev : $('.pre'),          //前一个按钮
+        //     next : $('.next'),          //后一个按钮
+        //     arrow : 1,             //是否反转
+        //     cycle : 1              //是否循环
+        // })
+        $(' .classItem').mouseover(function () {
+            $(this).find(".big").show().siblings('.small').hide();
+            // alert()
 
         }).mouseleave(function () {
-            $(this).find(".big").show();
+            $(this).find(".big").hide().siblings('.small').show();
         })
+
+
+        var citems = $('.classItem');
+        var itCount = 0;
+        $('.pre').click(function () {
+            itCount--;
+
+            goNowCount(itCount);
+        });
+        $('.next').click(function () {
+            itCount++;
+            if (itCount >= citems.length - 5) {
+                //把数组的首个移动到末尾补上
+                var first = $('.classItem')[itCount-2];
+                citems.push(first) ;
+                // $('.scroll').append(first);
+                $('.scroll').css('width',(citems.length)*(190)+'px');
+                $('.scroll').append(citems[citems.length]);
+            }
+            goNowCount(itCount);
+        });
+
+        function goNowCount(c) {
+            $('.scroll').animate({left: c * (-190) + 'px'}, 1000);
+
+        }
+
+        // $('.scroll').animate({left: '500px'}, 1000);
     })
 </script>
 </body>

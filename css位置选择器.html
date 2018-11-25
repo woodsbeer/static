@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <script src="jquery-3.3.1.min.js"></script>
     <style>
 
   h2:nth-child(3){
@@ -14,6 +15,9 @@
   /*h2:first-child{       //选择是其父元素的首个子元素的h2*/
       /*color: violet;*/
       /*}*/
+        h5 {
+            margin: 900px auto;
+        }
     </style>
 </head>
 <body>
@@ -24,6 +28,11 @@
     <h2>3</h2>
     <h2>4</h2>
 </div>
-
+<h5>bottom</h5>
+<script>
+    $(window).scroll(function () {
+        console.log("scroll");
+    })
+</script>
 </body>
 </html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    var num = prompt("请输入数字！", 5);
+    try {
+        if (isNaN(num)) {
+            throw new Error("这不是数字");
+
+        }
+    } catch (e) {
+        alert(e + "   message:" + e.message)
+    }
+
+    function small(a) {
+        console.log("small begin");
+
+        if (isNaN(a)) {
+            throw Error("这不是数字")
+        }
+        console.log("small finish");
+    }
+
+    function middle(a) {
+        console.log("middle begin");
+
+        small(a);
+        console.log("middle finish");
+    }
+
+    /**
+     * 如果出错只有big的finish会打印出来
+     * smlll报错后会终止后面的代码，middle也是，直到被big捕获
+     * @param a
+     */
+    function big(a) {
+        console.log("big begin");
+        try {
+            middle(a);
+        } catch (e) {
+    console.log(e)
+        }
+
+        console.log("big finish");
+    }
+    big("d");
+
+
+
+//及到异步代码，无法在调用时捕获，原因就是在捕获的当时，回调函数并未执行。
+
+    // 类似的，当我们处理一个事件时，在绑定事件的代码处，无法捕获事件处理函数的错误。
+    function printTime() {
+        throw new Error();
+    }
+
+    try {
+        setTimeout(printTime, 1000);
+        console.log('done');
+    } catch (e) {
+        console.log('error');
+    }
+
+
+</script>
+</body>
+</html>

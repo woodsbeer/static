@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var arrays = [1,2,3];
+    //新建方法使用function而不是new function
+    var newArr= arrays.map( function (num) {
+        return num*5;
+    });
+    //5 10 15
+    console.log(newArr);
+    //不变
+    console.log(arrays);
+    //[1,"false",false]
+    console.log(JSON.stringify([new Number(1), new String("false"), new Boolean(false)]))
+
+</script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    #fu {
+      list-style: none;
+
+    }
+
+    #fu li {
+      display: inline-block;
+      height: 30px;
+      line-height: 30px;
+      padding: 0 15px;
+      position: relative;
+    }
+
+    #fu li::before {
+      content: '';
+      position: absolute;
+      left: 100%;
+      top: 0;
+      /*display: block;*/
+      height: 100%;
+      width: 0;
+      border-bottom: 2px forestgreen solid;
+      transition: 0.4s all linear;
+    }
+    #fu li:hover::before{
+      width: 100%;
+      left: 0;
+    }
+    #fu li:hover ~li::before{
+      left: 0;
+    }
+  </style>
+</head>
+<body>
+<ul id="fu">
+  <li>sds</li>
+  <li>sds</li>
+  <li>sds</li>
+  <li>sds</li>
+  <li>sds</li>
+</ul>
+</body>
+</html>
+

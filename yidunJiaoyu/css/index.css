@@ -441,12 +441,14 @@
     width: 950px;
     height: 187px;
     overflow: hidden;
+    position: absolute;
 
 }
 
 .bodyDiv .index2 .index2Con .keChengLunboDiv .orangeFrame .scroll {
-    width: 2244px;
+    width: 1330px;
     height: 187px;
+    position: relative;
 }
 
 .keChengLunboDiv .orangeFrame .scroll .classItem {
@@ -475,12 +477,15 @@
 
 }
 .scroll .classItem a table tbody{
-    vertical-align: middle;
-    display:  table-row-group;;
+    /*!*vertical-align: top;*!  //默认剧中*/
+    /*display:  table-row-group;*/
 }
 .scroll .classItem a table tbody td.small{
     background: url("../images/kc_yuan (1).png") center center no-repeat;
-    display: table-cell;
+
+    /*width: 100%;*/
+    /*height: 100%;*/
+    /*display: table-cell;*/
 }
 
 .scroll .classItem a table tbody td.big {

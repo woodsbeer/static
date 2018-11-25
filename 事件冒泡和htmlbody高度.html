@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-3.3.1.min.js"></script>
+    <style>
+        body, html {
+            height: 100%;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .out {
+            height: 40%;
+            width: 300px;
+            margin: 30px auto 30px;
+            background: #fff811;
+            /*overflow: hidden;*/
+            border: 1px solid cornflowerblue;
+        }
+
+        .mid, .in {
+            /*//同级或者嵌套的盒元素，并且它们之间没有非空内容、 Padding或Border分隔，他们会共享margin，设置border可以解决*/
+            border: 1px solid cornflowerblue;
+            margin: 30px 30px;
+            height: 100%;
+            /*overflow: hidden;*/
+        }
+
+        .mid {
+            background: #d45d5c;
+        }
+
+        .in {
+            background: forestgreen;
+        }
+
+    </style>
+</head>
+<body>
+<div class="out">
+    <div class="mid">
+        <div class="in"></div>
+    </div>
+</div>
+<script>
+    var static = 'static!';
+    $(function () {
+        //     /**
+        //      * 点击in的话从里到外三个方法依次触发
+        //      */
+        //
+        //     $('.out').click(function () {
+        //         console.log('this out');
+        //     })
+        //     $('.mid').click(function () {
+        //         console.log('this mid');
+        //     })
+        //     $('.in').click(inClick);
+        //     //事件处理程序中的代码可以访问任何全局变量
+        // })
+        /**
+         * jquery的事件委托，从里到外,由父元素接受从子元素冒泡进来的事件，然后让子元素执行方法
+         */
+        $('.out').on('click',function () {
+            console.log('out!');
+        });
+        $('.out').on('click','.mid',function (e) {
+            console.log('mid!');
+            e.stopPropagation();  //中断冒泡
+        });
+        $('.out').on('click','.mid .in',function () {
+            console.log('in!');
+        });
+        //这里把冒泡断了的话上面的委托就都失效了
+        $('.in').on('click',function (e) {
+            console.log('独立的in事件');
+            // e.stopPropagation();
+        });
+        function inClick() {
+            console.log(static);
+            console.log(event.type);//在事件处理程序中自带event对象，表示当前动作
+
+        }
+    })
+</script>
+
+</body>
+</html>

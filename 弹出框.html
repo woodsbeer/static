@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <!--<script src="jquery-3.3.1.min.js"/>-->
+  <style>
+    * {
+      margin: 0;
+    }
+
+    body, html {
+      height: 100%
+    }
+
+    .bg {
+      top: 0;
+      left: 0;
+      position: absolute;
+      height: 100vh;
+      width: 100vw;
+      background: rgba(192, 192, 192, 0.09);
+      display: none;
+      z-index: 0;
+    }
+
+    .box {
+      position: relative;
+      top: 300px;
+      left: 300px;
+      display: none;
+      height: 100px;
+      width: 300px;
+      background: #cdffc5;
+      z-index: 1;
+    }
+
+    button {
+      margin: 50px auto;
+      width: 80px;
+      height: 30px;
+      text-align: center;
+      border-radius: 8px;
+      box-shadow: 2px 2px 5px #4a5607;
+    }
+  </style>
+</head>
+<body>
+<div>
+  <p>dsdsod dwijdoijd dwio jwiodj qio di wjiod jqpodjawoid nw </p>
+  <button class="open"></button>
+  <div class="bg"/>
+  <div class="box">
+    <button class="close">click me</button>
+  </div>
+</div>
+
+<script>
+
+  const bg = document.getElementsByClassName('bg')[0];
+  const box = document.getElementsByClassName('box')[0];
+  const open = document.getElementsByClassName('open')[0]
+  const close = document.getElementsByClassName('close')[0]
+  open.addEventListener('click', function () {
+    bg.style.display = 'block'
+    box.style.display = 'block'
+  }, false)
+  close.addEventListener('click', function () {
+    bg.style.display = 'none'
+    box.style.display = 'none'
+  }, false)
+
+</script>
+</body>
+</html>
+

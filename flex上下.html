@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    .main{
+      position: absolute;
+      left:0;
+      top:0;
+      background-color: aquamarine;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+    }
+
+    .top{
+      height: calc(100vh - 61px);/**可以不要**/
+      width: 100%;
+      background-color: blue;
+      flex:1;/**占据所有剩余空间**/
+    }
+
+    .bottom{
+      width: 100%;
+      /*height: 61px;*/
+      background-color: red;
+      /*flex-shrink: 0;!**不能缩放*!*/
+      /*flex-grow: 0;!**不能缩放*!*/
+      flex: 0 0 61px;
+    }
+  </style>
+</head>
+<body>
+
+
+<div class="main">
+  <div class="top"></div>
+  <div class="bottom"></div>
+</div>
+</body>
+</html>
+

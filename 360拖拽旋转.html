@@ -5,9 +5,9 @@
     <title>Title</title>
     <style>
         .mode {
-            height: 300px;
-            width: 500px;
-            background: rgba(229, 202, 20, 0.94);
+            /*height: 300px;*/
+            /*width: 500px;*/
+            /*background: rgba(229, 202, 20, 0.94);*/
         }
     </style>
 </head>
@@ -20,6 +20,7 @@
     var modeImg = document.getElementById("modeImg");
     var imgs = document.getElementsByTagName("img");
     var lastImg = modeImg;
+    //x是判断哪一帧的依据
     var x = 0;
     var speed = 0;
     var lastX = 0;
@@ -50,7 +51,7 @@
             document.onmouseup = function (ev) {
                 document.onmousemove = null;
                 document.onmouseup = null;
-                time = setTimeout("moveWork()", 20);
+                time = setTimeout(moveWork, 20);
             };
             return false;
         };
@@ -68,7 +69,7 @@
             speed++;
         }
         changeImgByX();
-        time = setTimeout("moveWork()", 30);
+        time = setTimeout(moveWork, 30);
     }
 
     function changeImgByX() {
@@ -93,7 +94,6 @@
             lastImg.style.display = "none";
             imgs[l].style.display = "block";
             lastImg = imgs[l];
-
         }
     }
 

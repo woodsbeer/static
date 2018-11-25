@@ -14,14 +14,14 @@
             padding: 0;
             box-sizing: border-box;
             -webkit-tap-highlight-color: transparent;
-        / / 手机端超链接之类的点击会变色，但是如果已经给标签设置了背景颜色就不会变色，这里直接设为透明 box-sizing: border-box;
+            /*/ / 手机端超链接之类的点击会变色，但是如果已经给标签设置了背景颜色就不会变色，这里直接设为透明 */
         }
 
         body {
             background: #f5f5f5;
             font-size: 14px;
             font-family: "微软雅黑", sans-serif;
-        / / 手机端可能没有微软雅黑，后面的是设备的默认字体
+            /*/ / 手机端可能没有微软雅黑，后面的是设备的默认字体*/
         }
 
         /**
@@ -52,10 +52,10 @@
         a:hover {
             text-decoration: none;
         }
-        ul,li{
+
+        ul, li {
             list-style: none;
         }
-
 
         input {
             border: none;
@@ -126,8 +126,8 @@
             /*所以padding包含在宽高里面，这样实现圣杯布局
             其左右绝对布局固定*/
             background: rgba(139, 0, 0, 0.7);
-        /*/ / 透明*/
-        width: 100%;
+            /*/ / 透明*/
+            width: 100%;
             padding-left: 77px;
             padding-right: 117px;
             display: inline-block;
@@ -143,7 +143,7 @@
             border-radius: 40px;
             height: 50px;
             vertical-align: middle;
-        / / 必须设置这个，默认的是vertical-alignbaseline会有偏差（为了与幽灵元素y的最下面对齐）
+            /*/ / 必须设置这个，默认的是vertical-alignbaseline会有偏差（为了与幽灵元素y的最下面对齐）*/
 
         }
 
@@ -187,17 +187,17 @@
         .lunBo > ul:first-child li a img {
             width: 100%;
             display: block;
-        / / a比img是因为img是行内元素，基线对齐，下面留出和y坐下面对齐的空间
+            /*/ / a比img是因为img是行内元素，基线对齐，下面留出和y坐下面对齐的空间*/
         }
 
         .lunBo > ul:last-child {
             width: 78px;
-        / / 根据子元素的长度重新修改他的宽度达成对齐 height: 6 px;
+            /*/ / 根据子元素的长度重新修改他的宽度达成对齐 height: 6 px;*/
             position: absolute;
             bottom: 6px;
             left: 50%;
             margin-left: -39px;
-        / / 水平居中
+            /*/ / 水平居中*/
         }
 
         .lunBo > ul:last-child li {
@@ -212,7 +212,7 @@
 
         .lunBo > ul:last-child li:first-child {
             margin-left: 0;
-        / / 取消第一个li的左边距，为了居中
+            /*/ / 取消第一个li的左边距，为了居中*/
         }
 
         .lunBo > ul:last-child li.now {
@@ -289,7 +289,7 @@
             font-weight: normal;
             line-height: 50px;
             text-indent: 10px;
-        / / 缩进
+            /*/ / 缩进*/
 
         }
 
@@ -350,39 +350,47 @@
             margin-right: 8px;
 
         }
+
         .jdProducts .jdbox.jdSk .jdBoxBody {
             width: 100%;
 
         }
-        .jdProducts .jdbox.jdSk .jdBoxBody ul{
+
+        .jdProducts .jdbox.jdSk .jdBoxBody ul {
             width: 100%;
             display: flex;
             /*justify-content: space-between;*/
 
         }
-        .jdProducts .jdbox.jdSk .jdBoxBody ul li{
+
+        .jdProducts .jdbox.jdSk .jdBoxBody ul li {
 
             /*flex: 33%;*/
         }
-        .jdProducts .jdbox.jdSk .jdBoxBody ul li a{
+
+        .jdProducts .jdbox.jdSk .jdBoxBody ul li a {
             display: block;
         }
-        .jdProducts .jdbox.jdSk .jdBoxBody ul li a img{
+
+        .jdProducts .jdbox.jdSk .jdBoxBody ul li a img {
             margin: 3px auto;
             display: block;
             width: 70%;
 
         }
-        .fLoaft{
+
+        .fLoaft {
             float: left;
         }
-        .rLoaft{
+
+        .rLoaft {
             float: right;
         }
-        .widthHalf{
+
+        .widthHalf {
             width: 50%;
         }
-        
+
         .testSanjiao {
             float: left;
             /*width: 11px;*/
@@ -403,6 +411,48 @@
 
         }
 
+        /**
+        同心圆
+         */
+        .fuYuan {
+            margin: 50px 60px;
+            position: relative;
+            width: 100px;
+            height: 100px;
+            border-radius: 50px;
+            background: aquamarine;
+        }
+
+        .ziYuan {
+            position: absolute;
+            border-radius: 53px;
+            width: 106px;
+            height: 106px;
+            border: 2px #fff811 solid;
+            left: -5px;
+            top: -5px;
+        }
+
+        /**
+        特殊区域
+         */
+        .jdDiv .bottom {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background: #333333;
+            height: 50px;
+            color: aliceblue;
+        }
+
+        .midBody {
+            z-index: 10000;
+            position: fixed;
+            height: 50%;
+            /*border: #d45d5c 1px solid;*/
+            top: 20%;
+            width: 100%;
+        }
     </style>
 </head>
 <body>
@@ -424,7 +474,12 @@
     </header>
     <div class="lunBo">
         <ul class="cleanfix">
-            <li><a href=""><img src="images/1.jpg" alt="1"></a></li>
+            <li><a href="">
+                <source srcset="images/3.jpg" media="(min-width:400px)">
+                <source srcset="images/2.jpg" media="(min-width:800px)">
+                <img src="images/1.jpg" alt="1">
+                </picture>
+            </a></li>
             <li><a href=""><img src="images/2.jpg" alt="2"></a></li>
             <li><a href=""><img src="images/3.jpg" alt="3"></a></li>
         </ul>
@@ -525,8 +580,64 @@
 
     <div class="testSanjiao">
 
+        <div class="fuYuan">
+            <div class="ziYuan"></div>
+        </div>
+    </div>
+    <div class="bottom" style="display: block">
+        this is bottom
     </div>
 
 </div>
+<div class="midBody">
+
+</div>
+<script>
+    var win = $(window);
+    var doc = $(document);
+
+    var dom = {
+        //
+        midBody: $(".midBody"),
+        bottom: $(".bottom")
+
+    };
+    win.scroll(function () {
+        dom.bottom.slideUp();
+        console.log("scroll");
+    });
+    /**
+     * 如果存在addEventListener，scroll不执行
+     * 删掉他独立运行两个方法就没问题
+     *
+     */
+    addEventListener1();
+    //
+    //
+    function addEventListener1() {
+        dom.midBody.on("click", function () {
+            console.log("click");
+            if (dom.bottom.css("display") == "none") {
+                dom.bottom.slideDown();
+            }
+            else {
+                dom.bottom.slideUp();
+            }
+
+
+        });
+    }
+
+
+    //     $(window).scroll(function () {
+    //         // dom.bottom.hide();
+    //         console.log("scroll");
+    //     });
+    //
+    //
+
+    //
+    // }
+</script>
 </body>
 </html>

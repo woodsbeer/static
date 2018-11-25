@@ -28,9 +28,38 @@
             animation-name: gg;
             animation-duration: 2s;
         }
+        .outShensuo{
+         position: fixed;
+            right: 200px;
+            top: 400px;
+            overflow: hidden;
+
+        }
+        .outShensuo .longHeng{
+            position: absolute;
+            width: 50px;
+            height: 20px;
+            background: #fff811;
+            right: -50px;
+        }
+        .outShensuo .squary{
+            height: 20px;
+            width: 20px;
+            background: aquamarine;
+            position: absolute;
+            right: 0;
+            top:0;
+
+        }
     </style>
 </head>
 <body>
+<div class="outShensuo">
+    <div class="longHeng">
+
+    </div>
+    <div class="squary"> </div>
+</div>
 <div id="red">
     sddd
 </div>
@@ -67,6 +96,13 @@
             alert(200);
         }
     }
+
+    /**
+     * 滑动条的js
+     */
+    $(".outShensuo>.longHeng").click(function () {
+        $
+    })
 </script>
 </body>
 </html>

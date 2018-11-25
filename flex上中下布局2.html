@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .contain {
+      height: 100vh;
+      width: 100vw;
+      /*主方向水平的flex*/
+      display: flex;
+    }
+
+    .left {
+      float: left;
+      flex: 0 0 100px;
+      background: #cdffc5;
+    }
+
+    .right {
+      float: left;
+      flex: 1;
+      background: #ffe1c7;
+      position: relative;
+      display: flex;
+      /*//这里的flex主方向是上下*/
+      flex-direction: column;
+    }
+
+    .top {
+      flex:0 0 50px;
+      width: 100%;
+      background: #c9b9ff;
+    }
+    /*仅仅是y有滚动条*/
+    /*content是上下设置间距，这样不会内容遮挡*/
+    .content {
+      /*//这个空间的面积很大，所以要让他根据剩下的空间进行缩小，第二个参数设置为1*/
+      flex: 0 1 auto;
+      overflow-y: scroll;
+    }
+
+    .footer {
+      flex:0 0 60px;
+      width: 100%;
+      background: #c9b9ff;
+    }
+  </style>
+</head>
+<body>
+<div class="contain">
+  <div class="left"></div>
+  <div class="right">
+    <div class="top">
+
+    </div>
+    <div class="content">contet
+
+      yout.Sider 支持响应式布局。
+
+      说明：配置 breakpoint 属性即生效，视窗宽度小于 breakpoint 时 Sider 缩小为 collapsedWidth 宽度，若将 collapsedWidth 设置为零，会出现特殊 trigger。
+
+
+      固定头部
+      一般用于固定顶部导航，方便页面切换。
+
+
+      固定侧边栏
+      当内容较长时，使用固定侧边栏可以提供更好的体验。
+
+      API#
+      <Layout>
+        <Header>header</Header>
+        <Layout>
+          <Sider>left sidebar</Sider>
+          <Content>main content</Content>
+          <Sider>right sidebar</Sider>
+        </Layout>
+        <Footer>footer</Footer>
+      </Layout>
+      Layout#
+      布局容器。
+
+      参数 说明 类型 默认值
+      className 容器 className string -
+      hasSider 表示子元素里有 Sider，一般不用指定。可用于服务端渲染时避免样式闪动 boolean -
+      style 指定样式 object -
+      Layout.Header Layout.Footer Layout.Content API 与 Layout 相同
+
+      Layout.Sider#
+      侧边栏。
+
+      参数 说明 类型 默认值
+      breakpoint 触发响应式布局的断点 Enum { 'xs', 'sm', 'md', 'lg', 'xl', 'xxl' } -
+      className 容器 className string -
+      collapsed 当前收起状态 boolean -
+      collapsedWidth 收缩宽度，设置为 0 会出现特殊 trigger number 64
+      collapsible 是否可收起 boolean false
+      defaultCollapsed 是否默认收起 boolean false
+      reverseArrow 翻转折叠提示箭头的方向，当 Sider 在右边时可以使用 boolean false
+      style 指定样式 object -
+      theme 主题颜色 string: light dark dark
+      trigger 自定义 trigger，设置为 null 时隐藏 trigger string|ReactNode -
+      width 宽度 number|string 200
+      onCollapse 展开-收起时的回调函数，有点击 trigger 以及响应式反馈两种方式可以触发 (collapsed, type) => {} -
+      onBreakpoint 触发响应式布局断点时的回调 (broken) => {} -
+      breakpoint width#
+      {
+      xs: '480px',
+      sm: '576px',
+      md: '768px',
+      lg: '992px',
+      xl: '1200px',
+      xxl: '1600px',
+      }
+      Grid栅格Affix固钉
+      相关资源
+      Ant Design Pro
+      Ant Design Mobile
+      NG-ZORRO - Ant Design of Angular
+      Awesome Ant Design
+      Kitchen - Sketch 工具集
+      Scaffolds - 脚手架市场
+      Umi - React 应用开发框架
+      dva - 数据流前端框架
+      Ant Motion - 设计动效
+      Axure Library - Axure 部件库
+      Ant UX - 页面逻辑素材
+      国内镜像站点 🇨🇳
+      社区
+      知乎专栏
+      Medium
+      Twitter
+      体验科技专栏
+      SEE Conf - 蚂蚁体验科技大会
+      加入我们
+      帮助
+      GitHub
+      更新记录
+      Ant Design 实战教程
+      常见问题
+      在线讨论 (中文)
+      在线讨论 (English)
+      报告 Bug
+      讨论列表
+      StackOverflow
+      SegmentFault
+      yout.Sider 支持响应式布局。
+
+      说明：配置 breakpoint 属性即生效，视窗宽度小于 breakpoint 时 Sider 缩小为 collapsedWidth 宽度，若将 collapsedWidth 设置为零，会出现特殊 trigger。
+
+
+      固定头部
+      一般用于固定顶部导航，方便页面切换。
+
+
+      固定侧边栏
+      当内容较长时，使用固定侧边栏可以提供更好的体验。
+
+      API#
+      <Layout>
+        <Header>header</Header>
+        <Layout>
+          <Sider>left sidebar</Sider>
+          <Content>main content</Content>
+          <Sider>right sidebar</Sider>
+        </Layout>
+        <Footer>footer</Footer>
+      </Layout>
+      Layout#
+      布局容器。
+
+      参数 说明 类型 默认值
+      className 容器 className string -
+      hasSider 表示子元素里有 Sider，一般不用指定。可用于服务端渲染时避免样式闪动 boolean -
+      style 指定样式 object -
+      Layout.Header Layout.Footer Layout.Content API 与 Layout 相同
+
+      Layout.Sider#
+      侧边栏。
+
+      参数 说明 类型 默认值
+      breakpoint 触发响应式布局的断点 Enum { 'xs', 'sm', 'md', 'lg', 'xl', 'xxl' } -
+      className 容器 className string -
+      collapsed 当前收起状态 boolean -
+      collapsedWidth 收缩宽度，设置为 0 会出现特殊 trigger number 64
+      collapsible 是否可收起 boolean false
+      defaultCollapsed 是否默认收起 boolean false
+      reverseArrow 翻转折叠提示箭头的方向，当 Sider 在右边时可以使用 boolean false
+      style 指定样式 object -
+      theme 主题颜色 string: light dark dark
+      trigger 自定义 trigger，设置为 null 时隐藏 trigger string|ReactNode -
+      width 宽度 number|string 200
+      onCollapse 展开-收起时的回调函数，有点击 trigger 以及响应式反馈两种方式可以触发 (collapsed, type) => {} -
+      onBreakpoint 触发响应式布局断点时的回调 (broken) => {} -
+      breakpoint width#
+      {
+      xs: '480px',
+      sm: '576px',
+      md: '768px',
+      lg: '992px',
+      xl: '1200px',
+      xxl: '1600px',
+      }
+      Grid栅格Affix固钉
+      相关资源
+      Ant Design Pro
+      Ant Design Mobile
+      NG-ZORRO - Ant Design of Angular
+      Awesome Ant Design
+      Kitchen - Sketch 工具集
+      Scaffolds - 脚手架市场
+      Umi - React 应用开发框架
+      dva - 数据流前端框架
+      Ant Motion - 设计动效
+      Axure Library - Axure 部件库
+      Ant UX - 页面逻辑素材
+      国内镜像站点 🇨🇳
+      社区
+      知乎专栏
+      Medium
+      Twitter
+      体验科技专栏
+      SEE Conf - 蚂蚁体验科技大会
+      加入我们
+      帮助
+      GitHub
+      更新记录
+      Ant Design 实战教程
+      常见问题
+      在线讨论 (中文)
+      在线讨论 (English)
+      报告 Bug
+      讨论列表
+      StackOverflow
+      SegmentFault
+      yout.Sider 支持响应式布局。
+
+      说明：配置 breakpoint 属性即生效，视窗宽度小于 breakpoint 时 Sider 缩小为 collapsedWidth 宽度，若将 collapsedWidth 设置为零，会出现特殊 trigger。
+
+
+      固定头部
+      一般用于固定顶部导航，方便页面切换。
+
+
+      固定侧边栏
+      当内容较长时，使用固定侧边栏可以提供更好的体验。
+
+      API#
+      <Layout>
+        <Header>header</Header>
+        <Layout>
+          <Sider>left sidebar</Sider>
+          <Content>main content</Content>
+          <Sider>right sidebar</Sider>
+        </Layout>
+        <Footer>footer</Footer>
+      </Layout>
+      Layout#
+      布局容器。
+
+      参数 说明 类型 默认值
+      className 容器 className string -
+      hasSider 表示子元素里有 Sider，一般不用指定。可用于服务端渲染时避免样式闪动 boolean -
+      style 指定样式 object -
+      Layout.Header Layout.Footer Layout.Content API 与 Layout 相同
+
+      Layout.Sider#
+      侧边栏。
+
+      参数 说明 类型 默认值
+      breakpoint 触发响应式布局的断点 Enum { 'xs', 'sm', 'md', 'lg', 'xl', 'xxl' } -
+      className 容器 className string -
+      collapsed 当前收起状态 boolean -
+      collapsedWidth 收缩宽度，设置为 0 会出现特殊 trigger number 64
+      collapsible 是否可收起 boolean false
+      defaultCollapsed 是否默认收起 boolean false
+      reverseArrow 翻转折叠提示箭头的方向，当 Sider 在右边时可以使用 boolean false
+      style 指定样式 object -
+      theme 主题颜色 string: light dark dark
+      trigger 自定义 trigger，设置为 null 时隐藏 trigger string|ReactNode -
+      width 宽度 number|string 200
+      onCollapse 展开-收起时的回调函数，有点击 trigger 以及响应式反馈两种方式可以触发 (collapsed, type) => {} -
+      onBreakpoint 触发响应式布局断点时的回调 (broken) => {} -
+      breakpoint width#
+      {
+      xs: '480px',
+      sm: '576px',
+      md: '768px',
+      lg: '992px',
+      xl: '1200px',
+      xxl: '1600px',
+      }
+      Grid栅格Affix固钉
+      相关资源
+      Ant Design Pro
+      Ant Design Mobile
+      NG-ZORRO - Ant Design of Angular
+      Awesome Ant Design
+      Kitchen - Sketch 工具集
+      Scaffolds - 脚手架市场
+      Umi - React 应用开发框架
+      dva - 数据流前端框架
+      Ant Motion - 设计动效
+      Axure Library - Axure 部件库
+      Ant UX - 页面逻辑素材
+      国内镜像站点 🇨🇳
+      社区
+      知乎专栏
+      Medium
+      Twitter
+      体验科技专栏
+      SEE Conf - 蚂蚁体验科技大会
+      加入我们
+      帮助
+      GitHub
+      更新记录
+      Ant Design 实战教程
+      常见问题
+      在线讨论 (中文)
+      在线讨论 (English)
+      报告 Bug
+      讨论列表
+      StackOverflow
+      SegmentFault
+
+    </div>
+    <div class="footer"></div>
+  </div>
+</div>
+</body>
+</html>
+

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-3.3.1.min.js"></script>
+    <style>
+        .showDTime {
+            height: 200px;
+            width: 350px;
+            border: aquamarine 1px dashed;
+            font: 22px/30px normal;
+        }
+        .timeinput {
+            float: left;
+            height: 50px;
+            width: 150px;
+        }
+    </style>
+</head>
+<body>
+//返回的是String
+<input type="date" class="myYear">
+<div class="timeinput year">2018</div>
+<div class="timeinput munth" >8</div>
+<div class="timeinput day">23</div>
+<div class="showDTime">
+
+</div>
+<script>
+
+
+    $(".showDTime").click(function () {
+
+        var tarTimeVal = $("input[type='date']").val();
+        console.log(typeof tarTimeVal);
+        /**
+         * 默认是当前时间
+         * */
+        var nowTime = new Date();
+        var tarTime = new Date();
+        tarTime.setFullYear(parseInt($(".year").text()));
+        // console.log(parseInt($(".munth").text()));
+        //月份从0开始
+        /**
+         * 单独设置年份或者月份都行
+         */
+        tarTime.setMonth(parseInt($(".munth").text()-1) );
+        //设置日是date
+        tarTime.setDate(parseInt($(".day").text()) );
+        tarTime.setHours(0);
+        tarTime.setMinutes(0);
+        tarTime.setSeconds(0);
+        var dms = tarTime.getTime()-nowTime.getTime();
+        console.log(tarTime.getTime()+" "+nowTime.getTime());
+        dms = dms/1000;
+        // var dm =parseInt(dms/2592000) ;
+        // dms%=1296000;
+        var dd =parseInt( dms/86400);
+
+        alert("还剩天="+dd);
+    })
+</script>
+</body>
+</html>
