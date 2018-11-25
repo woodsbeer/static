@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script src="jquery-3.3.1.min.js"></script>
+  <script src="闭包.js"></script>
+</head>
+<style>
+  .but {
+    background: forestgreen;
+    height: 80px;
+    width: 80px;
+  }
+
+  button {
+    height: 80px;
+    width: 150px
+  }
+
+</style>
+<body>
+
+<div id="one">
+  546465
+</div>
+<div id="open" class="but">1</div>
+<div id="close" class="but">2</div>
+<button></button>
+
+<script>
+  console.log(test1);
+
+  let getId = (function (func) {
+    return function () {  //
+      //把document作为this传入自定义方法，实现功能
+      //返回在这个this中使用这些参数的结果
+      return func.apply(document, arguments);
+    }
+  })(document.getElementById);
+  // alert(getId('one').innerHTML);
+
+  let fa = function () {
+    alert(this === window);  //true
+    // console.log(arguments);
+  };
+  fa('111');
+  // fa.apply(null, '111');
+
+  setAction();
+  // setCommend(createCommend(tv));
+
+  let a2 = getScript('p');
+  let a3 = getScript('p');
+  console.log(a2 === a3);
+
+  const throttle = (fn, interval) => {
+    let timer, first = true, _fn = fn;
+    return function () {
+      if (first) {
+        fn(arguments);
+        timer = setTimeout(() => {
+          clearTimeout(timer);
+          timer = null;
+          //fn是箭头函数，所以他的this是他定义时的对象，不收setTimeout影响
+          // _fn(arguments);
+        }, interval || 500)
+        return first = false;
+      }
+      if (timer) {
+        return false;
+      }
+      fn(arguments);
+      timer = setTimeout(() => {
+        clearTimeout(timer);
+        timer = null;
+        //fn是箭头函数，所以他的this是他定义时的对象，不收setTimeout影响
+        // _fn(arguments);
+      }, interval || 500)
+    }
+  }
+
+  let click = throttle(() => {
+    console.log(1);
+  }, 1500)
+  $('button').on('click', click);
+
+
+</script>
+</body>
+</html>
+

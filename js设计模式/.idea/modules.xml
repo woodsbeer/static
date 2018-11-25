@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/js设计模式和算法.iml" filepath="$PROJECT_DIR$/.idea/js设计模式和算法.iml" />
+      <module fileurl="file://$PROJECT_DIR$/nodeTest1/nodeTest1.iml" filepath="$PROJECT_DIR$/nodeTest1/nodeTest1.iml" />
+    </modules>
+  </component>
+</project>

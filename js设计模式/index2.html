@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script src="jquery-3.3.1.min.js"></script>
+  <!--<script src="策略模式表单验证.js"></script>-->
+  <style>
+    button {
+      height: 80px;
+      width: 150px
+    }
+
+    button#but2 {
+      background: firebrick;
+      position: absolute;
+    }
+
+    #qiu {
+      position: absolute;
+      height: 40px;
+      width: 40px;
+      background: cornflowerblue;
+      border-radius: 20px;
+
+    }
+
+    #input1 {
+      margin-top: 40px;
+      margin-left: 200px;
+    }
+  </style>
+</head>
+<body>
+<div id="qiu"></div>
+<!--<div id="qiu"></div>-->
+<button id="but2"></button>
+<form method="post" id="form">
+  <input name="input1" id="input1" type="text" width="30">
+  <br>
+  <input name="input2" id="input2" type="text" width="30">
+  <input name="submit1" id="submit" type="submit" value="click">
+</form>
+<script>
+  // alert('!');
+  const tween = {
+
+    linear: function (t, b, c, d) {  //匀速
+      return c * t / d + b;
+    },
+    easeIn: function (t, b, c, d) {  //加速曲线
+      return c * (t /= d) * t + b;
+    },
+    easeOut: function (t, b, c, d) {  //减速曲线
+      return -c * (t /= d) * (t - 2) + b;
+    },
+    easeBoth: function (t, b, c, d) {  //加速减速曲线
+      if ((t /= d / 2) < 1) {
+        return c / 2 * t * t + b;
+      }
+      return -c / 2 * ((--t) * (t - 2) - 1) + b;
+    },
+
+  };
+  const animation = function (dom) {
+    this.dom = dom;
+    this.startTime = 0;
+    this.startPos = 0;
+    this.endPos = 0;
+    this.duration = null;
+    this.propertyName = null;
+    this.easing = null;
+
+    const start = (propertyName, endPos, duration, easing) => {
+      // console.log(duration);
+      this.startTime = +new Date;
+      this.propertyName = propertyName;
+      this.endPos = endPos;
+      this.easing = tween[easing];
+      this.startPos = this.dom.getBoundingClientRect()[propertyName];
+      this.duration = duration;
+
+      let timer = setInterval(() => {
+        if (step() === false) {
+          clearInterval(timer)
+        }
+
+      }, 20);
+    };
+    const step = () => {
+      let t = +new Date;
+      if (t >= this.startTime + this.duration) {
+        update(this.endPos);
+        return false;
+      }
+      let pos = this.easing(t - this.startTime, this.startPos, this.endPos - this.startPos, this.duration);
+      update(pos);
+    };
+    const update = pos => {
+      this.dom.style[this.propertyName] = pos + 'px';
+    };
+    return {
+      start
+    }
+  };
+
+
+  $('#but2').on('click', () => {
+    // alert('hjgjg');
+    const ani1 = animation(document.getElementById('qiu'));
+    ani1.start('top', 500, 1000, 'linear');
+
+  });
+  $('#qiu').on('click', () => {
+    const ani2 = animation(document.getElementById('but2'));
+    ani2.start('left', 800, 1000, 'linear');
+  })
+
+
+  //表单验证
+  const strategies = {
+    isNotEmpty: (value, err) => {
+      if (value === '')
+        return err;
+    },
+    minLength: (val, min, err) => {
+      if (val.length < min) {
+        return err;
+      }
+    }
+  };
+
+  const validatorr = function () {
+    this.cache = [];
+  };
+
+  validatorr.prototype.add = function (dom, rules) {
+    for (let rule of rules) {
+      let strategyAry = rule.strategy.split(':');
+      let errMassage = rule.errMessage;
+      this.cache.push(() => {
+        let strategy = strategyAry.shift();
+        strategyAry.unshift(dom.value);
+        strategyAry.push(errMassage);
+        return strategies[strategy].apply(dom, strategyAry);
+      })
+    }
+
+  };
+  validatorr.prototype.start = function () {
+    for (let item of this.cache) {
+      const error = item();
+      if (error) {
+        return error;
+      }
+    }
+  };
+
+
+  const form = document.getElementById('form');
+  const doInitValite = function () {
+    const validator = new validatorr();
+    validator.add(form.input1, [{strategy: 'minLength:6', errMessage: '最少六个字母'},{strategy:'isNotEmpty',errMessage:'input1不能为空'}]);
+    validator.add(form.input2, [{strategy:'isNotEmpty',errMessage:'input2不能为空'}]);
+    let error = validator.start();
+    return error;
+
+  }
+  // document.getElementById()
+  $('#form').on('submit', function () {
+    // alert();
+    const error = doInitValite();
+    if (error) {
+      alert(error);
+      return false
+    }
+  })
+
+</script>
+</body>
+</html>
+

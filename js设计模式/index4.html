@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    .d1{
+      position: relative;
+      height: 50px;
+      background: #d45d5c;
+      filter:blur(80px);
+      z-index: -1;
+    /*//没有-1的话他会在普通层的上面*/
+    }
+    .d2{
+      height: 50px;
+      background: #c9b9ff;
+      margin-top: -20px;
+    /*//上移覆盖上面的div*/
+    }
+    form{
+      line-height: 50px;
+    }
+    form span{
+      font-size: 20px;
+    }
+    #i1{
+      height: 33px;
+      width: 80px;
+      font-size: 20px;
+      /*vertical-align: middle;*/
+    }
+  </style>
+</head>
+<body>
+<div class="d1"></div>
+<div class="d2"></div>
+<form action="">
+  <input type="text" id="i1"> <span>dsds</span>dsds
+</form>
+<select name="name"  id="select">
+  <option value="v1">电视机冬季</option>
+  <option value="v2">电视机冬季2</option>
+</select>
+
+<script>
+  const select = document.getElementById('select');
+  select.addEventListener('change',function (e) {  //在这里原生的input组件监听方法接受的是e，在react中的onChange得到的是value
+      console.log(e.target.value);  //value是内部数据，不是显示给别人看的说明文字
+  })
+</script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    button {
+      width: 60px;
+      height: 40px;
+    }
+
+    .test {
+      height: 50px;
+      width: 50px;
+      background: black;
+    }
+  </style>
+</head>
+<body>
+<button>diaowo</button>
+<button>diaowoquxiaoclass</button>
+<div>
+  <img src="http://img.hb.aicdn.com/bd71ccac0b16bbcade255a1a8a63504d71c7dee9a8652-zBCN9d_fw" alt="">
+  <img src="http://img.hb.aicdn.com/bd71ccac0b16bbcade255a1a8a63504d71c7dee9a8652-zBCN9d_fw" alt="">
+</div>
+<script>
+  const button = document.getElementsByTagName('button')[0];
+  const button1 = document.getElementsByTagName('button')[1];
+  button.addEventListener('click', function () {
+    let ele = document.createElement('div');
+    ele.setAttribute('class', 'test');
+    document.body.appendChild(ele)
+  })
+  button1.addEventListener('click', function () {
+    let ele = document.getElementsByClassName('test')[0];
+    document.body.removeChild(ele)
+    // ele.setAttribute('class','');
+    // document.body.appendChild(ele)
+  })
+  let img = new Image();
+  img.src = "http://img.hb.aicdn.com/bd71ccac0b16bbcade255a1a8a63504d71c7dee9a8652-zBCN9d_fw";
+  if (img.complete)
+    console.log('complete is true');
+  img.onload = function () {
+    console.log('onload1');
+  }
+
+</script>
+</body>
+</html>
+

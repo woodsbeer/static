@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    #sample {
+      position: absolute;
+      background: red;
+      width: 100px;
+      height: 100px;
+    }
+  </style>
+</head>
+<body>
+<div id="sample"/>
+<script>
+  let lastTime = new Date().getTime();
+  let startTime = new Date().getTime();
+  const sample = document.getElementById('sample');
+  let left = 0;
+  //两个currenttime之间的时间差是16秒间隔（可能超过）加上render函数渲染的时间
+  function raf(fn) {
+    //渲染完成以后的时间
+    let currentTimeStamp = new Date().getTime();
+    //如果和上一次调用raf的时间间隔大于16就立即执行
+    let delay = Math.max(0, 16 - (currentTimeStamp - lastTime));
+    setTimeout(function () {
+      fn(currentTimeStamp)
+    }, delay);
+    lastTime = currentTimeStamp;    //上一次ref的调用时间，下一次是fn渲染完以后会调用raf
+  }
+
+  function render(time) {
+    left = (time - startTime) / 5;
+    sample.style.left = left + 'px';
+    if (left < 400) {
+      raf(render)
+    }
+
+  }
+
+  raf(render);
+</script>
+</body>
+</html>
+

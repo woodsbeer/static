@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<form action="">
+  <input type="text" id="txt1">
+  <input type="text" id="txt2">
+  <button id="mySubmit">clickme</button>
+</form>
+<script>
+  const validator = {
+    'noVoid': function (val, errMessage) {
+      if (!val) {
+        return errMessage;
+      }
+    },
+    'minLength': function (val, min, err) {
+      if (val.length < min) {
+        return err;
+      }
+    }
+  };
+  const txt1 = document.getElementById('txt1');
+  const txt2 = document.getElementById('txt2');
+  const submit = document.getElementById('mySubmit');
+
+  const Check = function () {
+    this.cable = [];
+  };
+  Check.prototype.add = function (dom, rules) {
+    const val = dom.value;
+    for (const rule of rules) {
+      //因为type里面同时放置了检测类型和可能会有的参数用:分割
+      const args = rule.type.split(':');
+      const type = args.shift();
+      //然后我们在这个剩下的args的基础上加入参数再整体放入判断函数
+      args.push(rule.errMessage);
+      args.unshift(val);
+       this.cable.push(() => {
+       return  validator[type].apply(this, args)
+      })
+    }
+  };
+  Check.prototype.start = function () {
+    for (const cableElement of this.cable) {
+      const err = cableElement();
+      if (err)
+        return err
+    }
+  };
+  const check = new Check();
+
+  submit.addEventListener('click', function (e) {
+    e.preventDefault();
+    check.add(txt1, [{type: 'noVoid', errMessage: 'noVoid!'}, {type: 'minLength:4', errMessage: '最小4个字符！'}]);
+    check.add(txt2, [{type: 'noVoid', errMessage: 'noVoid!'}]);
+    let err = '';
+    if (err = check.start())
+      alert(err);
+  })
+</script>
+</body>
+</html>
+
