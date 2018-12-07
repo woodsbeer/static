@@ -1,7 +1,7 @@
 {
   actions = {
-    attack: function () {
-      console.log('attack');
+    attack: function (count) {
+      console.log('attack',count);
     },
     defence: function () {
       console.log('defence');
@@ -14,17 +14,21 @@
 //通过操作命令对象集合的方式，有java中接口的效果，以后actions中的方法发生了改变，调用者依然不用改变自己的调用方式，还方便自己给这些方法额外加工
   function getCommand(actions) {
     this.hisList = [];
-    this.doAction = (action) => {
-      actions[action]();
-      this.hisList.push(actions[action]);
+    //分别接受来自命令的方法名和参数
+    this.doAction = (action,count) => {
+      //调用执行方法
+      actions[action](count);
+      //把这个方法装到历史记录
+      this.hisList.push(()=>actions[action](count));
     };
     //返回经过加工的从actions这个集合中取出的方法
     //会把执行的方法存在闭包中的历史数组（因为js方法是可以作为参数被传递的）
     return {
-      attack: () => this.doAction('attack'),
+      //如果命令是需要参数的话，肯定从一开始就要接受参数
+      attack: (count) => this.doAction('attack',count),
       jump: () => this.doAction('jump'),
       defence: () => this.doAction('defence'),
-      //执行比包中保存的历史信息
+      //执行闭包中保存的历史信息
       reView: () =>
           this.hisList.map((fn) => {
             fn();
@@ -33,6 +37,7 @@
   }
 
   const myCommmand = getCommand(actions);
+  myCommmand.attack(5);
   myCommmand.defence();
   myCommmand.jump();
   myCommmand.reView();
@@ -79,14 +84,10 @@
       event.fliter(type)
     }
     const say = text => {
-      // actions.say();
+      // 执行返回的某一个命令，其实是把封装好的指定命令注册到监听器
       event.listen('say', () => {
         actions.say(text)
       });
-      // if (event.onlyOne('say')) {
-      //   console.log('只有一个，所以立即执行');
-      //   event.fliter('say')
-      // }
     };
     return {
       say,start

@@ -6,15 +6,17 @@
                 resolve(data);
             }
             else {
-                console.log('shibai');
+                reject(data);
+                // console.log('shibai');
             }
         }, 1500);
-
     }
 
     let G = new Promise(getData);
     G.then((data) => {
         console.log(data, "g.then............");
+    }).catch(err=>{
+        console.log(err,'g.catch......');
     });
 
 }
