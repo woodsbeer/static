@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .out{
+            width: 200px;
+            background: #999999;
+        }
+        .in1{
+            margin-top: -10px;
+            height: 10px;
+            width: 200px;
+            background: #4a5607;
+        }
+        .in2{
+            width: 200px;
+            background: chartreuse;
+            /*overflow: hidden;*/
+        }
+        .in3{
+            margin: 20px auto;
+            width: 100%;
+            height: 40px;
+            background: #d45d5c;
+        }
+    </style>
+</head>
+<body>
+<div class="out">
+    outdiv
+    <div class="in1"></div>
+    <div>
+        <!--//子元素有上下margin，但是不会撑开父容器，因为他被父容器直接包裹，margin仍然有效但是其实是作为父容器的margin渲染，
+        而且在浏览器中f12仍然显示是子元素的margin
+        要解决这个问题，让子元素的margin撑开父容器，就应该给父容器设置bfc-->
+        <div class="in2">
+            <div class="in3"></div>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>

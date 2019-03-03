@@ -92,6 +92,7 @@
           return fun.apply(this, arguments);
         }
         console.log('队列中拿一个');
+        //删除并取得第一个元素
         return objs.shift();
       },
       recover(obj) {
@@ -100,8 +101,8 @@
       }
     }
   }
-  const myFactory = objectFactory(function () {
-    let man1 = new Man('111');
+  const myFactory = objectFactory(function (name) {
+    let man1 = new Man(name);
     man1.say = function () {
       console.log(this.name);
       //对象执行完某一个操作后,调用工厂对象的回收方法
@@ -116,6 +117,6 @@
   let man = myFactory.create()
 
   let man2 = myFactory.create();
-
+man.say()
 }
 
