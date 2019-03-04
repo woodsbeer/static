@@ -27,7 +27,7 @@
     close: function () {
       console.log('close the tv!');
     }
-  }
+  };
   let computer = {
     play: function () {
       console.log('open and play the game!');
@@ -113,6 +113,4 @@ let getSingle = function (fun, e) {
 let getScript = getSingle(function (node) {  //有参数的匿名函数
   return document.createElement(node);
 }, 'e')
-let test1 = 'ddd';
-console.log('我在闭包文件中');
 

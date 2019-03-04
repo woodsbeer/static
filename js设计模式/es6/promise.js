@@ -15,8 +15,8 @@
     let G = new Promise(getData);
     G.then((data) => {
         console.log(data, "g.then............");
-    }).catch(err=>{
-        console.log(err,'g.catch......');
+    }).catch(err => {
+        console.log(err, 'g.catch......');
     });
 
 }
@@ -113,4 +113,28 @@
     })()
 
 
+}
+
+{
+    ///setTimeout的第三个参数
+    const mockPromise = (callback) => {
+        //这个方法的返回值是Promise对象，我们可以用await接受里面代码运行时resolve的数据
+        return new Promise(resolve => {
+            //把promise的resolve方法传入callback，使得我们传入的callback方法可以使用这个resolve方法
+            //这样的写法可以更灵活的使用外部定义好的setTimeOut，不然无法获取resolve
+            setTimeout(callback, 2000, resolve);
+//这里设置callback的参数是resolve，我们以后使用这个方法传进去的回调函数以这个resolve作为参数，
+            // 在指定时间后作出相应的操作然后用reolve返回数据
+        });
+    };
+    const testRes = mockPromise(resolve => {
+        //这个参数就是一个在promise中运行的回调函数，他的参数resolve是我们在上面promise的setTimeOut中传给他的
+        resolve('jieguo')
+    });
+//下面两种方式都可以接收到数据//
+    const asFun = (async function () {
+        const res = await testRes
+        console.log(res);
+    })()
+    testRes.then(res => console.log(res))
 }
