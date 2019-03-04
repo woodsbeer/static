@@ -110,8 +110,6 @@
         }
       }, 700)
     }
-
-
   };
 
   function write(data) {
