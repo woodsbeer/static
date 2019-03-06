@@ -2,28 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="178e79f6-c903-4448-89ff-44661e589b3e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/js设计模式/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/js设计模式/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/js设计模式/suanFa/特殊数组转对象.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/js设计模式/test3.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/js设计模式/test4.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/js设计模式/test5.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/js设计模式/test5immutate.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/js设计模式/责任链异步.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/js设计模式/重写分时函数.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/marginfushu.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/numberInput.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/元素覆盖.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js设计模式/es6/promise.js" beforeDir="false" afterPath="$PROJECT_DIR$/js设计模式/es6/promise.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js设计模式/suanFa/leetcode5.js" beforeDir="false" afterPath="$PROJECT_DIR$/js设计模式/suanFa/leetcode5.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js设计模式/suanFa/leetcode9.js" beforeDir="false" afterPath="$PROJECT_DIR$/js设计模式/suanFa/leetcode9.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js设计模式/suanFa/排序.js" beforeDir="false" afterPath="$PROJECT_DIR$/js设计模式/suanFa/排序.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js设计模式/享元模式.js" beforeDir="false" afterPath="$PROJECT_DIR$/js设计模式/享元模式.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js设计模式/职责连.js" beforeDir="false" afterPath="$PROJECT_DIR$/js设计模式/职责连.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js设计模式/高阶函数之currying.js" beforeDir="false" afterPath="$PROJECT_DIR$/js设计模式/高阶函数之currying.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.yarn-integrity" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -112,8 +92,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js设计模式/suanFa/排序.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="269">
-              <caret line="74" column="16" selection-start-line="74" selection-start-column="16" selection-end-line="74" selection-end-column="16" />
+            <state relative-caret-position="128">
+              <caret line="80" column="34" selection-start-line="80" selection-start-column="34" selection-end-line="80" selection-end-column="34" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -190,7 +170,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -219,12 +198,14 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="vcs.Git" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -240,6 +221,9 @@
   </component>
   <component name="RunManager" selected="Node.js.排序.js">
     <configuration name="特殊数组转对象.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/js设计模式/suanFa/特殊数组转对象.js" working-dir="$PROJECT_DIR$">
+      <method v="2" />
+    </configuration>
+    <configuration name="排序.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/js设计模式/suanFa/排序.js" working-dir="$PROJECT_DIR$">
       <method v="2" />
     </configuration>
     <configuration name="排序.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/js设计模式/suanFa/排序.js" working-dir="$PROJECT_DIR$">
@@ -276,7 +260,8 @@
     </recent_temporary>
   </component>
   <component name="SvnConfiguration">
-    <configuration />
+    <configuration>C:\Users\86173\AppData\Roaming\Subversion</configuration>
+    <option name="sshConnectionType" value="PRIVATE_KEY" />
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -308,12 +293,14 @@
       <workItem from="1547477385926" duration="1727000" />
       <workItem from="1547650269098" duration="1457000" />
       <workItem from="1548043167878" duration="39000" />
-      <workItem from="1551616583477" duration="1187000" />
+      <workItem from="1551616583477" duration="3327000" />
+      <workItem from="1551783950579" duration="1204000" />
+      <workItem from="1551873548485" duration="2497000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="67676000" />
+    <option name="totallyTimeSpent" value="73517000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -323,14 +310,14 @@
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.33427763" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.3569405" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3696884" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.41359773" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.329718" />
-      <window_info anchor="bottom" id="Terminal" order="9" weight="0.19305857" />
+      <window_info anchor="bottom" id="Terminal" order="9" weight="0.23937677" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -385,9 +372,14 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/js设计模式/suanFa/排序.js</url>
-          <line>70</line>
-          <properties lambdaOrdinal="-1" />
+          <line>98</line>
           <option name="timeStamp" value="16" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/js设计模式/suanFa/排序.js</url>
+          <line>67</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="17" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -618,8 +610,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js设计模式/suanFa/排序.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="269">
-          <caret line="74" column="16" selection-start-line="74" selection-start-column="16" selection-end-line="74" selection-end-column="16" />
+        <state relative-caret-position="128">
+          <caret line="80" column="34" selection-start-line="80" selection-start-column="34" selection-end-line="80" selection-end-column="34" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
