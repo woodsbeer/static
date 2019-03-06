@@ -13,7 +13,7 @@
         return
       }
       let files = this.parent.list;
-      for (let i = 0; i <= files.length; i++) {
+      for (let i = 0; i < files.length; i++) {
         if (files[i] === this) {
           files.splice(i, 1)
         }
@@ -31,7 +31,7 @@
   }
 
   class Folder extends abFile {
-    constructor(name) {
+    constructor() {
       super(...arguments);
     }
 

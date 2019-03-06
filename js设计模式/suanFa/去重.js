@@ -50,7 +50,7 @@
     return out;
   }
 
-  console.log(quChonggg([21, 43, 21, 33, 33]));
+  console.log(quChonggg([21, 43, 21, 33, 33,11]),'hhhh');
 }
 
 {

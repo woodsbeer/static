@@ -41,7 +41,7 @@
       console.log('倒茶');
     },
     needCondiment() {
-      return false
+      return true
     },
     addCondoment() {
       console.log('加类柠檬片');

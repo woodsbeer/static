@@ -12,6 +12,7 @@
         #theForm {
             width: 500px;
             border: beige 1px solid;
+            /*pointer-events: none;*/
         }
 
         #theForm .title {
@@ -138,6 +139,9 @@
         <option value="jojo"></option>
         <option value="dio!!"></option>
     </datalist>
+    <input type="number">
+    <input type="file" id="ff">
+    <button id="cc">cccc</button>
 </div>
 <script>
     $(function(){
@@ -145,6 +149,15 @@
             // alert()
             $(this).css({"border":"black 1px solid","border-bottom":"white 1px solid"}).siblings().css({"border":"none"});
         })
+        $('#cc').on('click',function () {
+            console.log('ccc');
+            $('#ff').trigger('onchange');
+        });
+        $('#ff').trigger('onclick');
+        const f = document.getElementById('cc');
+        const file = document.getElementById('ff');
+        f['click']();
+        file.click();
     })
 </script>
 </body>
